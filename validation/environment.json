@@ -1,0 +1,21 @@
+{
+  "document_python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "python_docx": "1.2.0",
+  "pypdf": "6.10.0",
+  "plot": {
+    "python": "3.13.5 (main, Jun 12 2025, 12:22:43) [Clang 20.1.4 ]",
+    "matplotlib": "3.10.8",
+    "numpy": "2.5.4"
+  },
+  "renderer": "/Users/rock/.codex/plugins/cache/openai-primary-runtime/documents/26.1104.22356/skills/documents/render_docx.py",
+  "libreoffice": "/Users/rock/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/MacOS/soffice",
+  "fonts": [
+    "Times New Roman",
+    "Songti SC",
+    "DejaVu Sans",
+    "Cambria Math"
+  ],
+  "render_command": "FONTCONFIG_FILE=manuscript/render_fontconfig_macos.conf python render_docx.py manuscript/input-and-horizon-dependent-structural-fidelity-preprint-{en,zh}.docx --output_dir validation/final-{en,zh} --emit_pdf",
+  "no_simulation": true
+}

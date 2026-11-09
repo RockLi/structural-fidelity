@@ -1,0 +1,88 @@
+冻结模型独立审计：尺度、门控与观测时点
+2026-10-23
+
+范围
+本报告审计本目录 source/ 下继承的 Rust 内核，不修改任何库源文件。
+kernel_audit.rs 提供 8 个针对真实库接口的最小技术检查；实际编译和执行记录以本轮技术预检日志为准。
+本轮保留此前模型以便比较；以下限制是解释边界，不被悄悄修正为另一套模型。
+
+1. 模型尺度和变量意义
+source/src/state/mod.rs:54-55 明确称其为 Phase 1 的 minimal placeholder kernel。
+实际执行的 SIMD-friendly 分支在同文件 102-135 行，主要公式在 109-128 行：
+  active = 1[refractory_until <= 当前处理槽 n]
+  I = (gE - gI + gL) * active
+  V <- V + (-V + I) * dt * active
+  gE,gI,gL <- (gE,gI,gL) * (1 - dt*active)
+  若 active 且 V>=30，则发放、V=-65、refractory_until=n+2。
+初值 -65（同文件 42 行）和复位 -65 是赋值，不是漏电平衡电位。
+没有 E_leak、膜电容、突触反转电位或 Izhikevich recovery 更新方程；recovery 被存储但在这个内核中不演化。
+g 虽命名为 conductance，但直接以带符号的电流样量进入 V，不能按生理电导模型解释。
+若始终执行且没有输入，V 以因子 1-dt 漏向 0，而非 -65。
+以本实验约定 dt=0.1 ms 解释时间，未门控时每槽 g 保留 0.9；其精确离散指数等效衰减时间为 -0.1/log(0.9)≈0.949 ms，而非额外拟合的突触时间常数。
+强抑制可以给出有限的几千负值，因为没有 V 的下限或反转电位。这本身不等于 NaN/Inf 数值爆炸，但也不是可解释的生理膜电位。
+
+source/src/experiment/harness.rs:162 使用 field_decay_tau=10。
+source/src/core/chunk.rs:64-68：fieldE <- fieldE*exp(-dt/tau)+spike_sum，fieldI 仅作指数衰减。
+同文件 190-199 行：旧 fieldE/fieldI 每次 chunk step 以 0.01 倍反馈到对应 g，再进入单元内核。
+该内部反馈对每个 chunk 相同，不根据 E/I 标签改变符号。I 标签影响跨块边的路由符号。
+source/src/connectivity/event_router.rs:94-96,111-127：边输入为 weight*整个源 chunk 的 spike_sum；不除以单位数。
+100 个同步单位发放时，本图四类权重 0.6/0.8/1.4/0.5 对应每边 60/80/140/50 的输入幅值，广播给目标块的每个单位。
+因此既不能把块中 100 个完全重复单位当成 100 个独立样本，也不能把当前幅值直接当作校准过的生理量。
+
+2. 不应期的精确槽规则
+source/src/state/mod.rs:109 的门控读取的是进入当前槽前的 refractory_until。
+槽 n 发放后，同文件 133-134 行设置 n+2；槽 n+1 被门控，槽 n+2 在等号处恢复更新。
+所以是跳过一个后续处理槽，不是两个后续处理槽；最短再次发放间隔为两槽。
+本实验 dt=0.1 ms 时，该规则对应最短间隔 0.2 ms 和一槽 0.1 ms 的整合跳过，不宜笼统称作“2 ms 不应期”。
+改变 dt 而保留 +2 会改变该规则的物理时长。
+
+重要门控重算告警：
+不能把保存于 step 后的 post_until[n]>n 直接视为“本槽被不应期跳过”。它会把本槽刚发生的发放也计入。
+应记录 pre_until[n]，并按 pre_until[n]>n 判断内核门控；还要记录 chunk 是否确实被 scheduler 执行。
+建议精确定义：kernel_gate_skipped[n] = stepped[n] && (pre_until[n]>n)。
+stepped[n] 可由前后 metrics.active_step_count 之差得到；不能由 post ChunkStatus 猜测。
+对旧的逐槽末状态，初值 pre_until[0]=0，之后 pre_until[n]=post_until[n-1]。
+本冻结模型只在发放时设置 n+2，发放后必留 active，故全部 pre_until[n]>n 的块下一槽必被执行。
+因此旧实验可交叉验证 gate[n] 与 spike[n-1]>0 完全一致，再报告重算门控比例。
+
+3. “门控时冻结”不等于输入被丢弃
+source/src/core/chunk.rs:173-188 先把到期事件按符号累加到 gE/gI。
+同文件 190-199 行再把旧 context field 累加到 g，最后才运行 gated 内核。
+所以不应期时 V 不变，g 的内核衰减暂停，但事件输入及 field 反馈仍能增加 g；输入没有被丢弃。
+同文件 201-203 行仍更新 context，故在该 chunk 被执行的门控槽里 field 继续衰减。
+上下文衰减、g 衰减和 V 积分的门控规则不同，不能称为“全部状态冻结”。
+仅 scheduler 未执行的休眠槽才不调用 Chunk::step，整个 chunk 状态保持。
+
+4. 调度状态和恢复解释
+source/src/experiment/harness.rs:183-184,208-209 把初始块设为 Dormant，因此初始静默块不会自动漏向 0。
+source/src/core/chunk.rs:219-229 的活跃条件包括发放、到期事件、context 和 g；不包括 V 离 0 或 -65 有多远。
+所以当 g/field 低于阈值且没有事件，scheduler 可冻结一个尚未漏回 0 的 V。
+source/src/core/scheduler.rs:103-115,121-128：是否下一槽执行取决于内部 active set；有未来排队事件的已执行块可继续留在 active set。
+即使 post status 为 PendingWakeUp，该块下一槽仍可能执行；post status 不是当前槽是否执行的观测值。
+同文件 67-85：Dormant/PendingWakeUp 块收到到期事件时可以被唤醒。
+零强度事件不增加 g，但仍会唤醒并影响调度。它在 chunk 的 due_events 非空条件下维持本槽 Active；后续还会再执行一槽才可能休眠。
+因此有限时间“恢复”应相对同图、同基线运行衡量，并同时报告执行/门控占比；不能把终态 V=初值、或零差异持续时间，自动视为生物恢复、吸引子稳定性或完整动态状态等价。
+只比较 V/g 也是观测状态比较；完整执行状态还含 context、refractory deadline 和待投递事件。
+
+5. 时间、外部刺激和路由顺序
+source/src/experiment/input_protocol.rs:107-150 在 scheduler.current_slot=n 时注入到 n+delay_slots。
+Pulsed 在 n%(on_slots+off_slots)<on_slots 时注入；零强度时直接不入队。
+source/src/core/scheduler.rs:62 取当前处理槽 n，128 行在 step 末尾将 current_slot 增为 n+1。
+source/src/connectivity/event_router.rs:85-118 在 step 后读取 n+1，再加 edge.delay_slots。
+因此 delay_slots=1 的 recurrent 事件由处理槽 n 的发放产生，在处理槽 n+2 投递，不能写成 n+1。
+旧 experiment.rs 保存 CSV step=n，行内状态是槽 n 执行完的状态；若标记物理末端时间，则为 (n+1)*dt。
+80 个刺激槽为 n=0..79；停止外部刺激后的第一槽为 n=80。
+阶段区间应按明确的半开槽范围划分，并保持样本末端时间与刺激边界的标记一致。
+
+6. 随附最小技术检查
+kernel_audit.rs main 逐一调用：
+1）同样初值下 scalar/SIMD 三槽逐字段比特一致，发放-跳过-恢复时序为 n=0,1,2；且 recovery 不更新。
+2）chunk 门控槽里外部 E/I 输入和旧 field 仍累加，V/g 衰减冻结，context 衰减继续；到期等号槽恢复积分及 g 衰减。
+3）连续执行的静默内核从 -65 漏向 0。
+4）强抑制产生有限的 -5058.5 而非被夹到某个生理下限。
+5）Dormant 初态冻结；零 wake 事件引起两次漏更新，之后调度冻结在未达 0 的值。
+6）PendingWakeUp post status 与是否实际被 step 不是同一个标志。
+7）post-step recurrent routing 在 delay=1 时从处理槽 0 到处理槽 2 才投递。
+8）InputProtocol pulsed 的当前槽、半开 on/off 窗口和即时外部输入规则。
+
+这些检查用于确认当前模型的实际执行语义，并不赋予其生理有效性。

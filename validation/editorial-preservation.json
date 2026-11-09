@@ -1,0 +1,200 @@
+{
+  "en": {
+    "status": "pass",
+    "main_figure_first_citations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "main_figure_placement": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "stable_keys": [
+      "1",
+      "5",
+      "9",
+      "10",
+      "15",
+      "16",
+      "17",
+      "18",
+      "14",
+      "11",
+      "12",
+      "13"
+    ],
+    "all_30_tables_unchanged": true,
+    "all_25_figures_preserved": true,
+    "all_equations_proofs_and_results_preserved": true,
+    "only_declared_reference_edits_and_figure_moves": true,
+    "first_citation_details": [
+      {
+        "number": 1,
+        "paragraph": "Routing occurs after the harness advances its current slot counter. For the uniform stored edge delay of one used here, a spike emitted in slot n produces expli"
+      },
+      {
+        "number": 2,
+        "paragraph": "All primary controls exactly preserve the specified per-node degrees and weight multisets. They retain 21.4–23.7% of the original directed adjacency pairs. Alth"
+      },
+      {
+        "number": 3,
+        "paragraph": "For each of the three inputs, every extensively rewired control has greater 1 ms identified-chunk error than every single-swap control (Table 4; Figure 3). The "
+      },
+      {
+        "number": 4,
+        "paragraph": "Among the 19 fixed swap graphs, two preserve every raw-slot chunk spike count under all three inputs, seven differ under all three, and ten switch between equal"
+      },
+      {
+        "number": 5,
+        "paragraph": "Matching global and focal external drive at every slot leaves 9/19 visibility switches under the original burst and 6/19 under the common rearranged schedule. P"
+      },
+      {
+        "number": 6,
+        "paragraph": "Across the ten legacy graphs, G_B/F_H switches occur in 4–13 of 19 fixed swaps per graph (median 9), despite total-drive equality at every slot. After temporal "
+      },
+      {
+        "number": 7,
+        "paragraph": "For heterogeneous LIF at 300 ms, every tested swap under every input differs from its own reference. Consequently all five input contrasts have zero visibility "
+      },
+      {
+        "number": 8,
+        "paragraph": "The median heterogeneous lower radius decreases from 4.19922% at 30 ms to 0.09880% at 300 ms. Lower bounds alone could reflect proof conservatism. The post hoc "
+      },
+      {
+        "number": 9,
+        "paragraph": "Across inputs, resolved orders disagree in 371/1,076 jointly resolved direction pairs for tonic/global, 498/1,008 for tonic/focal and 657/1,325 for global/focal"
+      },
+      {
+        "number": 10,
+        "paragraph": "For the 12 single-swap cases per input with nonzero raw-slot error, the median fractions D_count/D_slot are 4.34%, 5.93% and 12.66% for tonic, global-burst and "
+      },
+      {
+        "number": 11,
+        "paragraph": "For every common width and offset in the five-width scan, the smallest extensive identified-chunk error exceeds the largest single-swap error: 1,089 of 1,089 in"
+      },
+      {
+        "number": 12,
+        "paragraph": "At 0.9842% and 1.9684% edits, paired relative reductions of the coactivity score against random have means 54.87% and 46.90%, respectively, with nine strict red"
+      }
+    ]
+  },
+  "zh": {
+    "status": "pass",
+    "main_figure_first_citations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "main_figure_placement": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "stable_keys": [
+      "1",
+      "5",
+      "9",
+      "10",
+      "15",
+      "16",
+      "17",
+      "18",
+      "14",
+      "11",
+      "12",
+      "13"
+    ],
+    "all_30_tables_unchanged": true,
+    "all_25_figures_preserved": true,
+    "all_equations_proofs_and_results_preserved": true,
+    "only_declared_reference_edits_and_figure_moves": true,
+    "first_citation_details": [
+      {
+        "number": 1,
+        "paragraph": "路由发生在实验框架推进当前时间槽计数器之后。在本文统一采用的存储边延迟为一的条件下，时间槽 n 产生的脉冲通过显式路径在 n + 2 投递。原始输入求和、静态增益和历史状态调制路径采用相同的到达时间槽。双通道和四通道滤波路径则在 n + 1 投递。这些比较针对完整的执行规则：滤波方法与历史状态调制方法既在输入变换上不同"
+      },
+      {
+        "number": 2,
+        "paragraph": "全部主对照精确保留指定的逐节点度数及权重多重集，保留原图有向邻接对的比例为 21.4%–23.7%。虽然 97.7%–98.4% 的边表行更换了目标，但这一行级指标并不等于被移除的原始邻接对比例。表 3 报告同质主对照结果，图 2 展示两种网络的全部重连点。"
+      },
+      {
+        "number": 3,
+        "paragraph": "对三种输入中的每一种，全部大规模重连对照的1 ms具名块误差均高于全部单次交换对照（表4，图3）。持续、全局短时和局部短时输入下，大规模重连的最小误差依次为45.55%、23.14%和73.64%，单次交换的对应最大值为39.15%、9.83%和22.70%。这一比较区分了这些对照下观察到的误差尺度。它不建立误差与改边"
+      },
+      {
+        "number": 4,
+        "paragraph": "在19张固定交换图中，2张在三种输入下都保持全部逐槽块脉冲计数，7张在三种输入下都存在差异，10张则随输入协议改变，在一致与不同之间切换（图4）。每一行中的结构干预固定：端点、权重和改边数量均相同。该配对比较展示了结构变化在受测脉冲中的输入条件性。但它不单独识别空间局部性的影响，因为协议的总驱动和时间过程也不同。"
+      },
+      {
+        "number": 5,
+        "paragraph": "逐槽匹配全局与焦点外部驱动后，原爆发时序仍有9/19个可见性切换，共同重排时序下为6/19。逐节点幅值多重集不变的时间重排使全局输入4/19、匹配焦点输入1/19发生切换。匹配焦点比较中，18/19个交换的二元可见性标签保持不变。一个反例足以否定幅值多重集对结果的完全决定，但不能说明切换普遍；标签不变也不表示轨迹不变。"
+      },
+      {
+        "number": 6,
+        "paragraph": "十张旧核图中，尽管逐槽总驱动相等，G_B/F_H 每图仍有 4–13/19 个固定交换发生切换，中位数为 9。时间重排后的匹配总驱动比较 G_T/F_HT 有 6–11 个切换；全局时间重排有 2–8 个，匹配焦点重排有 0–4 个。环形 seed303 的焦点比较为 0/19，因此未通过该比较预设的“所有原图均出现切"
+      },
+      {
+        "number": 7,
+        "paragraph": "异质 LIF 在 300 ms 时，每种输入下全部被测交换均不同于自身参考，因此五种输入比较的可见性切换都为零。这是相等性标签的饱和：两边都已不同，而非彼此相等。同质对照在三图上仍有 2/1/1 个 G_B/F_H 切换。仅看切换或其消失都不能描述误差幅度；图 7 左图展示完整相等性标签构成，右图在第4.12节讨论。"
+      },
+      {
+        "number": 8,
+        "paragraph": "异质下界中位数由 30 ms 的 4.19922% 降至 300 ms 的 0.09880%。仅下界下降可能反映证明保守性。事后配对见证判据更强：710/720 个异质方向条件及 630/720 个同质条件满足 U_300<L_30，说明这些案例的长前缀失效落在此前已认证的短前缀范围内。这证明对应可执行参数族的范围严格"
+      },
+      {
+        "number": 9,
+        "paragraph": "跨输入时，Tonic与Global的371/1,076个共同可排序方向对反转，Tonic与Focal为498/1,008，Global与Focal为657/1,325，分别为34.5%、49.4%及49.6%。19个目标对中，分别有16、14及14个至少出现一次反转。因此在这些比较中，输入并非只将所有方向等比例缩放。图"
+      },
+      {
+        "number": 10,
+        "paragraph": "对每种输入下逐槽误差非零的12个单次交换案例，D_count/D_slot 的中位数在持续、全局短时及局部短时输入下分别为4.34%、5.93%和12.66%。对每种输入的19个大规模对照，对应中位数为56.77%、58.36%和52.55%（图10）。因此，在每种输入下，典型单次交换差异的大部分在同一具名节点内进行时"
+      },
+      {
+        "number": 11,
+        "paragraph": "五种箱宽扫描中的每个共同箱宽及偏移下，大规模对照最小具名块误差均高于单次交换最大误差，即1,089个输入／箱宽／偏移观测中的1,089个均分离（图11）。在1 ms下，对十个共同偏移取最小间隔，三种输入分别为6.40、13.14和50.00个百分点。这是对已有轨迹上所列偏移的穷尽检查，不是1,089次独立确认，也不支持"
+      },
+      {
+        "number": 12,
+        "paragraph": "在0.9842%与1.9684%改边预算下，共活动评分相对随机的配对降幅均值分别为54.87%和46.90%，各有9次严格降低及1次共同选择。训练逐槽L1的平均配对差为−0.08591和−0.11382，即−8.59与−11.38个百分点；两个预算均为7次改善、1次相同、2次变差。不过，共活动选择的平均误差仍为0.97"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "edition": "final review small revision 2026-10-26",
+  "built_utc": "2026-10-26T06:28:33.248426+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "rust": {
+    "version": "1.98.1",
+    "commit": "48a229ceaefd4985c50990b14116b6d856af0985",
+    "host": "aarch64-apple-darwin",
+    "LLVM": "22.1.8",
+    "edition": 2024,
+    "optimization_level": 3
+  },
+  "document_python": {
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "python_docx": "1.2.0",
+    "Pillow": "12.3.0"
+  },
+  "scientific_python": {
+    "version": "3.13.5",
+    "NumPy": "2.5.4",
+    "Matplotlib": "3.10.8"
+  },
+  "render": {
+    "engine": "bundled LibreOfficeDev 26.8.0.0.alpha0",
+    "commit": "2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "dpi": 110,
+    "fontconfig": "render_fontconfig_macos.conf",
+    "requested_fonts": [
+      "Times New Roman",
+      "Songti SC",
+      "Cambria Math"
+    ],
+    "english_pages": 43,
+    "chinese_pages": 47
+  },
+  "scope": "Clarifies score/corollary limits and adds six paired-control comparisons plus frozen continuation decisions. All 6,440 evidence files, scientific results, candidate selections and stop rule unchanged. Archived-data reanalysis and bilingual rendering validated this revision; prior full simulator validation retained as historical evidence.",
+  "new_simulations_this_revision": 0
+}

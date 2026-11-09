@@ -1,0 +1,9 @@
+{
+  "python": "3.13.5 (main, Jun 12 2025, 12:22:43) [Clang 20.1.4 ]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "atlas": "0.2.0",
+  "numpy": "2.5.4",
+  "backend": "/Users/rock/workspace/next-brain.ai/next-brain.ai/research/experiments/atlas-heterogeneous-lif-horizon-20261109/.venv/lib/python3.13/site-packages/brian2_rust/_bin/b2-runner",
+  "backend_sha256": "6b94b31a0781aa28a9923e2ac7cb513ba699b35a8aac7dff2a1f9f20de47891c",
+  "pip_freeze": "brian2-atlas==0.2.0\nCython==3.3.1\nJinja2==3.1.6\nMarkupSafe==3.0.4\nmpmath==1.3.0\nnumpy==2.5.4\npackaging==26.3\npyparsing==3.3.3\nsetuptools==84.2.1\nsympy==1.14.0\n"
+}

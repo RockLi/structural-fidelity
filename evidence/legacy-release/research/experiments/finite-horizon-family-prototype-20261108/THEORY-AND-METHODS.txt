@@ -1,0 +1,126 @@
+Fixed-support local weight-family prototype: proof and comparison contract
+
+Scope
+Retain the previous finite-horizon common-branch guarantee and original runtime
+assumptions. The underlying57 cases are unchanged (19 existing swap graphs,
+3 archived input protocols,125 synchronized chunks,300slots). Only weights into
+the two previously affected targets vary. No graph support, delay, source order,
+input protocol, kernel parameter, initial state or unit heterogeneity is added.
+The original reference is still the unswapped graph. Candidate outputs/archives
+are not read for choosing parameters or certifying the families.
+
+Parameterization
+For each target, sort incoming edges by source. Let s1 alternate +,- and s2
+repeat +,+,-,-. For d=1 or2, fixed alpha in[-1,1]^d throughout the run, use
+  ideal_w = w0*(1+rho/d*sum(s_j*alpha_j)),
+  actual_w = RN32(ideal_w), actual_event = RN32(100*actual_w).
+rho is one of the pre-fixed levels0,2^-16,2^-12,2^-8,2^-6,2^-4,1/4.
+Each ideal edge weight stays within[1-rho,1+rho]*w0; the actual bound additionally
+includes quantization. All remain positive, so support/pending/due flags stay
+parameter-independent under common source spikes. This does NOT preserve node
+strength or the weight multiset. d=2 divides each generator by2, so its rho
+cannot be compared to d=1 as if an identical per-axis radius were retained.
+Two parameters change incoming weights jointly at both targets; neither is
+redrawn at each slot. The prototype never adds edges or changes topology.
+
+Floating-point event bound
+Let u=2^-24,eta=2^-149. If w_max=w0*(1+rho), weight quantization error is at most
+  e_w = u*w_max+eta.
+Around the exact affine event ideal_a=100*ideal_w, bound the two roundings by
+  e_a = 100*e_w + u*100*(w_max+e_w)+eta.
+Then actual_a in ideal_a +/- e_a and actual_a <=100*w_max+e_a.
+These are conservative bounds, including at rho=0, not claims of actual error.
+External event amplitudes are fixed and have no parameter-entry error.
+The final local-field injection is the already-rounded original binary32
+field*.01, appended as a constant term. Incoming source counts0/100 and zero
+unused channels were validated by the previous reference reconstruction.
+
+Affine state with residual radius
+Maintain x=c+sum(p_j*alpha_j)+epsilon, |epsilon|<=r for v,gE,gI separately.
+Addition combines coefficients and adds error radii; negation flips coefficients
+and preserves radius; multiplication by a nonnegative fixed factor scales both.
+For m sequential positive actual additions, including local field, use
+  gamma=m*u/(1-m*u),
+  extra_error=gamma*(maxabs(old_state)+sum(actual_event_upper))+m*eta/(1-m*u).
+Add affine input coefficients, parameter-entry radii and this rounding radius.
+
+Voltage's exact centre is (1-h)*V+h*(E-I), h=binary32(.1). Preserve the same
+original-operation rounding bounds as the earlier audit: r1 for E-I, r2 for
+-V+(E-I with r1), r3 for multiplying by h, r4 for adding to V. Add
+h*(r1+r2)+r3+r4 to the propagated affine residual radius. This retains the
+voltage contraction without ignoring the original floating evaluation order.
+Decay uses the actual rounded d=binary32(1-h), adds u*d*maxabs(G)+eta and does
+not conflate d with the exact real1-h. Reset clears voltage coefficients and
+radius to exact -65. Refractory steps accumulate but do not update V or decay G;
+skipped steps freeze states. All pending and residual-activity guards are kept.
+
+Numerical implementation and proof obligations
+R in kernel.c encloses each exact-real coefficient/error expression using
+outward binary64 arithmetic. Matrix coefficients are not treated as exact
+unvalidated derivatives. Positive denominators, finite values, gradual underflow,
+nearest-even operations, and no contraction/reassociation are required. Method0
+uses the support function sum|p_j|, method1 evaluates all2^d corners of the affine
+part. Both add the uniform residual radius. Corner evaluation does not omit
+floating error or uncertainty in the computed coefficients. The two methods
+are mathematically equivalent for these scalar box range queries; differences
+can only arise from numerical enclosure order/overhead. No new theorem is
+claimed by replacing enumeration with a support function.
+
+Each successful range is wholly on the reference threshold side and resolves
+the same execution/status/next-active guard. Joint induction over slots and
+all affected targets then proves every alpha has the same spikes/branches as
+the original reference. Unaffected targets remain equal because their incoming
+streams and states are unchanged. Common local fields can be reused only
+because the proven spike AND execution history is the same. Conditional
+reference-driven processing is not a claim to simulate arbitrary divergent
+closed loops after a guard failure.
+
+Independent oracle
+oracle.py propagates exact Fraction coefficients and radii, without binary64
+coefficient rounding, and checks the identical guard logic. Native intervals
+must contain its exact interval endpoints at every saved slot, and decisions
+must agree on every checked condition. The oracle covers the largest tested
+passing region of each case/dimension and fixed representative cases/radii,
+including failures. This is implementation validation, not a proof assistant.
+The unchanged old singleton kernel separately reproduces all57 original
+outcomes and99,696 interval endpoint values. The new affine representation is
+a different enclosure, so its endpoint values need not equal the old interval
+representation; baseline decisions are checked and reported separately.
+
+Sampled witnesses and nontriviality
+For every family, use a fixed5^d grid alpha_j in{-1,-.5,0,.5,1}. Compute sample
+weights with exact rational nearest-even rounding and verify that native event
+generation matches bitwise. All these dyadic sample products fit binary64
+exactly before the final cast in the native generator; membership in the real
+parameter specification is checked, not assumed. Count distinct rounded full
+weight vectors and distinct ordered actual event arrays; those counts are
+lower bounds, not estimates of the family's cardinality. Compare all sampled
+states with each passing enclosure; centre/corner replay also matches an
+independent Python float32 replay. Finite samples are validation and witnesses,
+not the proof of the unsampled interior. A point branch failure refutes common-
+branch fidelity for the whole family, not necessarily spike-only fidelity.
+First reported failures follow target-major evaluation order, not necessarily
+the earliest global time of a closed-loop divergence.
+
+Strong baselines and timing
+All kernels in one translation unit, same compiler and flags. Four comparisons:
+1. affine support certificate: universal guarantee for the complete box;
+2. certified corner envelope: same universal guarantee, same uniform error;
+3. plain corner replay: only2^d concrete candidates;
+4. fixed-grid replay: only5^d candidates, with a cached-event timing as well.
+
+The two rigorous methods share the same event affine-model preparation, which
+is reported separately and included in their compute totals. Both sampled
+methods share immutable source-event metadata; their principal compute timings
+include candidate event generation, and neither pays graph disk I/O per point.
+The cached-grid timing excludes generation equally clearly. One-time reference
+setup, graph I/O and common metadata are separate.11 alternating rounds of20
+C-batched evaluations, symmetric warmup, no traced state writes in timing.
+Failing methods stop at their own unresolved/mismatched guard; conclusions
+about matched work use passing full-horizon families. Group medians over nested
+radii are descriptive repeated workloads, not independent scientific samples.
+
+The prototype's scope is parameter-family verification on existing references.
+No independent network validation, new topology/input conditions, or manuscript
+revision is included. No pruning acceleration, biological validity, universal
+coverage, maximal radius, or advantage over all endpoint-based methods follows.

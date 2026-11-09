@@ -1,0 +1,20 @@
+--- a/src/experiment/lpu_index.rs
++++ b/src/experiment/lpu_index.rs
+@@ -406,7 +406,7 @@
+                 let slow_ratio_e =
+                     (state.slow_exc / (trace.history_exc + 1e-3)).clamp(0.0, 1.5);
+                 let filter_gain_e = 1.0 - 0.03 * mod_e + 0.01 * (slow_ratio_e - 0.5);
+-                let exc_drive = kappa_exc * filter_gain_e * raw_exc;
++                let exc_drive = raw_exc;
+                 if exc_drive > 0.0 {
+                     scheduler.inject_event(DelayedEvent {
+                         target_chunk: ChunkId(tgt_idx as u32),
+@@ -423,7 +423,7 @@
+                 let slow_ratio_i =
+                     (state.slow_inh / (trace.history_inh + 1e-3)).clamp(0.0, 1.5);
+                 let filter_gain_i = 1.0 - 0.03 * mod_i + 0.01 * (slow_ratio_i - 0.5);
+-                let inh_drive = kappa_inh * filter_gain_i * raw_inh;
++                let inh_drive = raw_inh;
+                 if inh_drive > 0.0 {
+                     scheduler.inject_event(DelayedEvent {
+                         target_chunk: ChunkId(tgt_idx as u32),

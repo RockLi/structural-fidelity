@@ -1,0 +1,34 @@
+--- source/src/experiment/frontier.rs
++++ original_instrumented/src/experiment/frontier.rs
+@@ -126,8 +126,12 @@
+             1.0
+         };
+ 
++        let label = label.into();
++        let mismatched_steps = rec_explicit.steps.iter().zip(&rec_proxy.steps).filter(|(a,b)| a.total_spikes != b.total_spikes).count();
++        let max_spike_count_delta = rec_explicit.steps.iter().zip(&rec_proxy.steps).map(|(a,b)| a.total_spikes.abs_diff(b.total_spikes)).max().unwrap_or(0);
++        println!("[DIAGNOSTIC] label={} psth_r={:.9} fr_delta={:.9} event_ratio={:.9} explicit_events={} approx_events={} explicit_spikes={} approx_spikes={} mismatch_steps={} max_step_spike_delta={}", label, cmp.psth_correlation, cmp.mean_fr_delta_pct, event_ratio, explicit_events, proxy_events, explicit_spikes, proxy_spikes, mismatched_steps, max_spike_count_delta);
+         Self {
+-            label: label.into(),
++            label,
+             proxy_events,
+             explicit_events,
+             event_ratio,
+--- source/tests/phase3_benchmarks.rs
++++ original_instrumented/tests/phase3_benchmarks.rs
+@@ -2879,6 +2879,7 @@
+                 );
+                 let cmp_st = compare_dynamics(&rec_exp, &res_st.record, DT_S);
+                 let dyn_st = PopulationDynamics::from_record(&res_st.record, DT_S);
++                println!("[DIAGNOSTIC_E45] label={} psth_r={:.9} fr_delta={:.9} explicit_events={} approx_events={} explicit_spikes={} approx_spikes={} mismatch_steps={} max_step_spike_delta={}", label, cmp_st.psth_correlation, cmp_st.mean_fr_delta_pct, rec_exp.total_events(), res_st.record.total_events(), rec_exp.steps.iter().map(|s|s.total_spikes as u64).sum::<u64>(), res_st.record.steps.iter().map(|s|s.total_spikes as u64).sum::<u64>(), rec_exp.steps.iter().zip(&res_st.record.steps).filter(|(a,b)|a.total_spikes!=b.total_spikes).count(), rec_exp.steps.iter().zip(&res_st.record.steps).map(|(a,b)|a.total_spikes.abs_diff(b.total_spikes)).max().unwrap_or(0));
+                 println!(
+                     "[Stateful E4/{label}] exp={:.1}Hz | stateful={:.1}Hz psth_r={:.3} fr_delta={:+.1}% ret_e={:.1}%",
+                     dyn_exp.mean_fr_hz,
+@@ -2988,6 +2989,7 @@
+                 .map(|s| s.total_spikes as f32)
+                 .sum::<f32>()
+                 / QUIET_SLOTS as f32;
++                println!("[DIAGNOSTIC_E45] label={} psth_r={:.9} fr_delta={:.9} explicit_events={} approx_events={} explicit_spikes={} approx_spikes={} mismatch_steps={} max_step_spike_delta={}", "E5", cmp_st.psth_correlation, cmp_st.mean_fr_delta_pct, rec_exp.total_events(), res_st.record.total_events(), rec_exp.steps.iter().map(|s|s.total_spikes as u64).sum::<u64>(), res_st.record.steps.iter().map(|s|s.total_spikes as u64).sum::<u64>(), rec_exp.steps.iter().zip(&res_st.record.steps).filter(|(a,b)|a.total_spikes!=b.total_spikes).count(), rec_exp.steps.iter().zip(&res_st.record.steps).map(|(a,b)|a.total_spikes.abs_diff(b.total_spikes)).max().unwrap_or(0));
+             println!(
+                 "[Stateful E5] exp: burst={:.1} quiet={:.1} | stateful: burst={:.1} quiet={:.1} psth_r={:.3} fr_delta={:+.1}% ret_e={:.1}%",
+                 burst_exp,

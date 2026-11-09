@@ -1,0 +1,36 @@
+--- source/src/experiment/lpu_index.rs
++++ raw_sum/src/experiment/lpu_index.rs
+@@ -406,7 +406,7 @@
+                 let slow_ratio_e =
+                     (state.slow_exc / (trace.history_exc + 1e-3)).clamp(0.0, 1.5);
+                 let filter_gain_e = 1.0 - 0.03 * mod_e + 0.01 * (slow_ratio_e - 0.5);
+-                let exc_drive = kappa_exc * filter_gain_e * raw_exc;
++                let exc_drive = raw_exc;
+                 if exc_drive > 0.0 {
+                     scheduler.inject_event(DelayedEvent {
+                         target_chunk: ChunkId(tgt_idx as u32),
+@@ -423,7 +423,7 @@
+                 let slow_ratio_i =
+                     (state.slow_inh / (trace.history_inh + 1e-3)).clamp(0.0, 1.5);
+                 let filter_gain_i = 1.0 - 0.03 * mod_i + 0.01 * (slow_ratio_i - 0.5);
+-                let inh_drive = kappa_inh * filter_gain_i * raw_inh;
++                let inh_drive = raw_inh;
+                 if inh_drive > 0.0 {
+                     scheduler.inject_event(DelayedEvent {
+                         target_chunk: ChunkId(tgt_idx as u32),
+--- source/src/experiment/frontier.rs
++++ raw_sum/src/experiment/frontier.rs
+@@ -126,8 +126,12 @@
+             1.0
+         };
+ 
++        let label = label.into();
++        let mismatched_steps = rec_explicit.steps.iter().zip(&rec_proxy.steps).filter(|(a,b)| a.total_spikes != b.total_spikes).count();
++        let max_spike_count_delta = rec_explicit.steps.iter().zip(&rec_proxy.steps).map(|(a,b)| a.total_spikes.abs_diff(b.total_spikes)).max().unwrap_or(0);
++        println!("[DIAGNOSTIC] label={} psth_r={:.9} fr_delta={:.9} event_ratio={:.9} explicit_events={} approx_events={} explicit_spikes={} approx_spikes={} mismatch_steps={} max_step_spike_delta={}", label, cmp.psth_correlation, cmp.mean_fr_delta_pct, event_ratio, explicit_events, proxy_events, explicit_spikes, proxy_spikes, mismatched_steps, max_spike_count_delta);
+         Self {
+-            label: label.into(),
++            label,
+             proxy_events,
+             explicit_events,
+             event_ratio,

@@ -1,0 +1,59 @@
+POST HOC PAIRED DOSE / ERROR COMPOSITION ANALYSIS — 8 November 2026
+
+Use ONLY the ten already identified complete random-policy chains from the
+score-factor-coverage-audit-20261108 availability audit. Retain all ten chains,
+all three budgets and any zero errors. No candidate reselection, simulation,
+certification, input change or manuscript change. Outcomes were already available;
+this is retrospective analysis, not an independent prospective confirmation.
+
+Data: same 125-chunk original, 300-slot/30-ms focal input, identical original
+reference and within-arm nested prefixes. Budgets replace 28,56,282 original
+adjacencies (0.984%,1.968%,9.912%) with 14,28,141 accepted disjoint swaps.
+All original edge counts and states remain; there is no pruning/compression.
+The zero-edit reference is a common deterministic baseline, not ten samples.
+Earlier single-swap controls are NOT the first dose on these chains.
+
+Definitions, with delta[n,k]=candidate_count-reference_count in signed int64:
+Dslot=sum_nk |delta|; Dcount=sum_k |sum_n delta|;
+Dglobal=|sum_nk delta|; Dpopulation=sum_n |sum_k delta|.
+Ctime=Dslot-Dcount; Cspace=Dcount-Dglobal.
+Dslot=Ctime+Cspace+Dglobal. Ctime=2 sum_k min(P_k,N_k), where P,N are
+positive/negative difference masses at each identified node. Also report all
+node-level positive/negative masses, changed-node counts and first mismatch.
+Normalize D values by the SAME original total spike count. R=Dcount/Dslot and
+Ctime/Dslot are undefined when Dslot=0, never silently set to zero or one.
+Keep finite-window counts distinct from stationary firing rates and time
+cancellation distinct from a demonstrated pure spike-time shift.
+
+Primary summaries: individual chain points/connecting lines; mean, median, range,
+zero counts per budget. Report both mean/median per-chain R and pooled
+sum(Dcount)/sum(Dslot), which weights by discrepancy mass. No p-values or
+population confidence intervals from dependent observations on one graph.
+Paired changes for 28->56,56->282,28->282: sign counts, means and medians.
+Report how many chains are increasing/decreasing/nonmonotonic across all doses.
+Do not fit a power law, saturation curve or infer a breakpoint from 3 doses.
+
+Distinguish size and composition by exact paired algebra, not causal attribution:
+For X=Dslot/N_ref, Y=Dcount/N_ref, R=Y/X,
+DeltaY = ((R_a+R_b)/2)*DeltaX + ((X_a+X_b)/2)*DeltaR.
+First term is discrepancy-magnitude contribution, second is retained-fraction
+contribution; both are arithmetic decompositions, not intervention effects.
+Use this symmetric decomposition only when both X>0. Report excluded zero-boundary
+transitions separately. Also DeltaY=DeltaX-Delta(Ctime/N_ref), valid even at zero.
+Sum/average decomposition contributions across the SAME paired chains; do not
+add medians or divide by near-zero net changes to manufacture attribution shares.
+
+Limited readout check: same integer-count errors at fixed bin widths
+1,2,10,50,300 slots, all offsets within each width. Clip edge bins, discard no
+samples. Report chain/width offset ranges and median R_width=D_bin/Dslot;
+these are repeated readouts of the same trajectories, not new samples.
+At width300 use offset0 for Dcount; other offsets deliberately split the window
+and are sensitivity readouts, never redefined as full-window count error.
+
+Validation: compare integer endpoints with archived per-graph summaries,
+independent scalar reductions, exact Fraction paired decomposition, input/graph
+hashes and the earlier prefix audit. Fresh-process rerun of analysis must match.
+
+Decision for manuscript: assess whether intermediate matched doses change or
+qualify the old minimal-vs-extensive error-composition interpretation. Preserve
+null/nonmonotone results. Recommend placement and wording; do not edit papers.

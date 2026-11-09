@@ -1,0 +1,14 @@
+{
+  "python": "3.13.5 (main, Jun 12 2025, 12:22:43) [Clang 20.1.4 ]",
+  "python_executable": "/Users/rock/workspace/bettiai/next-brain/experiments/flywire_poc/.venv/bin/python",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "rustup_toolchain": "1.98.1",
+  "package_root": "/Users/rock/workspace/next-brain.ai/next-brain.ai/output/local-circuit-preprint-20261024-input-readout",
+  "output_root": "/private/tmp/local-circuit-input-readout-full-fresh-20261024/earlier",
+  "skip_docx": true,
+  "started_at_utc": "2026-10-24T14:35:20.196824+00:00",
+  "archived_data_fallback": false,
+  "archived_data_use": "Explicit verification reference only",
+  "source_log_relative_to": "/private/tmp/local-circuit-input-readout-full-fresh-20261024/earlier",
+  "renderer_used": false
+}

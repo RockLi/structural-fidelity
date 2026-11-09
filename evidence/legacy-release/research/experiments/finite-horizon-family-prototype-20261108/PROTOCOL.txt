@@ -1,0 +1,43 @@
+Small fixed-support family prototype, frozen before coverage results.
+Dataset: same57 graph/input cases, same125-chunk graph size,300slots, original
+reference branches/fields. No new full-network simulations, graph seeds, input
+protocols, or manuscript changes. Include all baseline failures.
+
+For each existing swapped graph, modify all existing incoming weights of its
+two affected targets; preserve support, positive sign/channel, delay and order.
+Within each target sort incoming edges by source. Direction1 signs alternate
+(+,-,+,-,...); direction2 signs repeat (+,+,-,-,...). Use dimensions d=1 and2.
+For rank j: w(alpha)=RN32(w0*(1+rho/d*sum_l sign(j,l)*alpha_l)), alpha_l in[-1,1].
+The SAME alpha applies to all slots and both targets. Actual event amplitude is
+RN32(100*w(alpha)). No strength/multiset preservation claim. rho bounds ideal
+relative edge-weight change; independent rounding adds its stated error.
+Radii, fixed in advance:0,2^-16,2^-12,2^-8,2^-6,2^-4,1/4.
+No adaptive search, region splitting, direction tuning, or new network families.
+Report largest tested passing radius, NOT true maximal robustness radius.
+
+Certificate A: affine parameter generators + uniform arithmetic error radii;
+range queries use box support functions. Certificate B: same sound propagation,
+range queries enumerate all2^d affine corners plus the same uniform error bound.
+B is a rigorous endpoint-envelope comparator, NOT just replaying corners.
+Both retain execute/spike/status/refractory guards and actual floating error.
+Also report plain corner point replay and a fixed5^d tensor grid (-1,-.5,0,.5,1):
+these are sampled checks, not certificates for the interior.
+Point samples use shared cached source events; no closed-loop network reruns.
+
+Coverage must include distinct rounded weight configurations AND distinct
+actual event streams; count fixed-grid witnesses, do not call real-parameter
+cardinality evidence of useful coverage. Track the first unresolved target/slot
+in evaluation order, guard kind and whether sampled checks find a witness.
+Point failures refute full common-branch fidelity, not necessarily spike-only
+fidelity. No candidate post-run states may select directions/radii.
+
+Validation: unchanged old57 singleton results/intervals; rational oracle for
+family operations and representative full traces; sampled-point states enclosed
+on all passing certificates; raw replay matches independent Python; all radius,
+case and method results retained including failures. Repeat in a fresh process.
+Both certificate methods and point batches compiled in one C unit, same flags:
+-O3 -std=c11 -fno-fast-math -ffp-contract=off.
+Warm up equally, alternate timing order,11rounds of20evaluations. Time kernels
+and input/model preparation separately. Point baselines reuse cached events and
+include point event generation in their end-to-end compute timing. Also retain
+pre-generated point replay timing. No runtime speedup assumed.

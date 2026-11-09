@@ -1,0 +1,131 @@
+CROSS GENERATOR VALIDATION — 9 November 2026
+
+Purpose: check the input-conditioned visibility, score ordering and certified
+regions outside the original homogeneous E/I independent-edge generator. This is
+not a new neuron model, an optimal topology search or a geometry causal study.
+The prior seed99 and100/101/102 results are known. No outcomes from the six new
+graphs may inform selection, parameters or criteria. Frozen manuscripts and all
+previous experiment manifests remain unchanged. Protocol is locally timestamped
+and hashed, not a public preregistration.
+
+GRAPH FAMILIES AND FIXED SEEDS
+125 labeled chunks,100 E IDs0:100,25 I IDs100:125; U100 synchronized units/chunk.
+Exactly1467 EE,610 EI,648 IE,120 II edges (2845 total), the historical seed99
+arm counts, with weight bits for binary32(.6,.8,1.4,.5), delay1. No self/parallel
+edges. New generators operate on ALL legal directed pairs, separately per arm.
+An independent uniform U in(0,1] gives key -log(U)/affinity; select the M smallest
+keys, deterministic source/target tie break. Sort selected rows by arm,source,
+target. This is weighted sampling without replacement with exact arm budgets;
+not the old Bernoulli generator or a degree-preserving rewiring of seed99.
+
+Module-biased family: seeds201,202,203. Five groups each contain20 E and5 I
+nodes. Assign nodes by separate E and I permutations from PCG64(seed+1000000).
+Affinity=4 for same-group pairs and1 otherwise, independent of projection arm.
+No mandatory connectivity backbone, output-based reassignment or rejection.
+
+Ring-distance-biased family: seeds301,302,303. PCG64(seed+1000000) permutes all125
+node identities onto equally spaced positions j/125. Circular distance is
+min(|x_i-x_j|,1-|x_i-x_j|). Affinity=exp(-distance/.15), same scale for all arms.
+No identity-order mapping onto the fixed focal input. This is a defined spatially
+biased random graph, not a claim to standard Watts-Strogatz or biological geometry.
+
+Edge keys use a separate PCG64(seed) stream, arms in EE,EI,IE,II order, potential
+pairs in source-major/target-minor order. U=1-rng.random() and the default NumPy
+binary64 elementary functions. All coordinates, labels, selected rows, RNG states
+and graph audits are saved. Graph generation repeated before any dynamics must
+produce identical graph bits. Structural descriptors: arm counts, node degree
+ranges, reciprocal pairs, directed three-cycles, module within-edge fraction or
+mean ring distance, and SCC count. Descriptor values are NOT acceptance gates.
+All six graphs retained, including silence or unexpected structure. Same arm
+counts/weights/total strengths across graphs do NOT match node degrees/strengths.
+Between-family outcomes therefore cannot isolate geometry from degree changes.
+
+KERNEL, INPUTS AND INTERVENTIONS
+Identical frozen Rust1.98.1 library, explicit source-sorted event driver, binary32,
+dt.1ms,300slots/30ms, default initial states and scheduler. Copy five exact previous
+event tables G_B,F_B,F_H,G_T,F_HT and time-permutation. Each new graph/input has its
+OWN original reference. Retain spatial/amplitude and timing/duration confounds.
+Original+19 independently drawn legal double-edge swaps per input:100 scientific
+conditions/graph,600 total. Repeat each original/input once (30 technical runs),
+and bridge old seed99 original under all5 inputs (5 technical, not new samples).
+
+Same swap sampler and fixed EE/EI/IE/II allocation5/5/5/4. For index i use
+random.Random(100000*graph_seed+93001+i), first legal equal-weight/delay target
+exchange within200000 proposals. Preserve row/source/weight/delay, node per-arm
+in/out degrees and weight multisets/strengths relative to its own original.
+Do not require locality/module affinity after swap: an edit can break these.
+This tests fidelity under legal statistics-preserving edits, not preservation of
+the generator's spatial or modular constraint. Report edit descriptor changes.
+No resampling on neural effect or target silence. Deduplicate affected target
+pairs by the prior sorted rule; retain mapping and never refill duplicate pairs.
+Per pair retain16 joint weight directions with unchanged pair_pool, balanced signs
+within target/EI/weight-bit groups, odd last edge fixed, +/- identified. RNG
+20261108+pair_index;10000 draws; inability to form16 is a technical stop.
+
+SCORING, CERTIFICATION AND VALIDATION
+Unchanged four score factors F0M0,F1M0,F0M1,F1M1, reference executed/nonrefractory
+mask, decay binary32(1-binary32(.1)), margin floor2^-20. Controls: random direction0,
+mean activity and independently time-shifted source trains (both keep filter and
+margin), full frozen-branch sensitivity as algebraic comparator. Preserve source
+counts on slots0:298; last2 slots unchanged. Shifts PCG64(20261108+input_index).
+No tuning on new graphs. All six graphs' scores and G_B-selected direction IDs
+are locked BEFORE any new radius search. Lower score predicts larger safe radius;
+ties use unchanged1e-10 rule. Frozen G_B scores/choices and input-conditioned
+scores reported separately. No reference-free prediction claim.
+
+Use unmodified C interval/affine and point kernels. Symmetric fixed-support
+relative edge-weight parameter, radius sequence0,2^-16,2^-12,2^-8,2^-6,2^-4,.25,
+up to8 bisections, width tolerance max(2^-20,.05U). Certificate supplies L, actual
+endpoint failure supplies U. Preserve proof gaps, cap censoring, refinement limits
+and zero lower bounds. Zero replay must match own reference. Certificate failure
+at zero does not mean actual trajectory differs. No extra refinement on failure.
+The guarantee is common spikes/execution branches, not closeness of all states.
+
+Independent Python point replay and exact weight-rounding check for every final
+failed witness. Recheck all certified lower regions, +/-L and0 samples; for certified
+regions verify endpoint state containment. Uncertified zero regions receive point
+replay but NOT a claimed enclosure check. Record distinct binary32 weight, event,
+and state realizations across the three witnesses, not just real-parameter widths.
+Exact Fraction affine validation at pair indices0,floor((N-1)/2),N-1 direction0,
+all5 inputs, fixed before outcomes. Cost on same cases,5 alternating rounds,batch10,
+2 warmups: model+certificate vs two/25-point generation+replay, same cached reference.
+These Python-wrapped timings are diagnostic, not optimized native-batch speedup.
+
+PREDECLARED REPORTING AND INTERPRETATION
+Each graph is a replication unit; graph family is the generalization axis.
+Three seeds per family are a limited selected design, not an ensemble inference.
+Inputs/target pairs/directions within a graph are dependent. No p-values or CIs.
+1 Visibility: full four cells and switches/19 for the five inherited contrasts.
+  For each contrast, per-family replication means all3 graphs have>=1 switch.
+  Across these two generators means both families satisfy it; otherwise report
+  which family/seed fails. No requirement to reproduce any old switch frequency.
+2 Score: same resolved comparisons for every method, half credit for ties;
+  target-pair macro, then equal five-input mean per graph. For random, filter-only,
+  margin-only, mean and shuffle compare joint-minus-control. Consistency within
+  family requires delta>1e-12 in all3 graphs; across both families requires all6.
+  Undefined input macros prevent an all-input claim. Report coverage, exclusions,
+  silent/zero projection counts and original fixed interval-separation strata.
+3 Transfer: G_B-frozen vs own-input scoring and choice win/loss/same-ID/cap-tie/
+  unresolved for every input/control. Opposite-order proportions only where both
+  inputs resolve the same direction pair. Near50% is not systematic reversal.
+4 Coverage: positive L, distinct-realization fractions, min/median/max L, L>=1%,
+  stop/failure counts per graph/input. Whole-region correctness is established by
+  proof and arithmetic checks, not high empirical certification success.
+5 Mechanistic diagnostics unchanged: reference threshold-margin min/p10/median,
+  unfiltered/filtered projection, factor contrasts, same-direction cross-input
+  score-vs-disjoint-radius ordering. No new fitted model or after-the-fact threshold.
+  Shared score/certificate dynamics cannot alone prove a causal margin mechanism.
+6 Structural descriptors and edit descriptor changes are descriptive context.
+  No hypothesis about the best family, higher clustering being causally protective,
+  or topology ranking from unmatched total perturbation supports. Report activity
+  and voltage extremes; no output-driven adjustment of input or weights.
+7 Earlier temporal-cancellation/dose results are NOT cross-generator tested here.
+
+STOP AND PRESERVATION
+Freeze generator/code/graphs/events/pools before new dynamics; then freeze all
+scores before new radius outcomes. Stop on hash mismatch, invalid invariant,
+nonfinite state, bad bridge or incorrect oracle/containment/witness. Preserve any
+failure, document adapter-only repairs and relock before rerun without changing
+scientific design. Missing results are not successes. No new seeds/families,
+input amplitudes, horizon or direction-budget expansion after outcomes.
+Analyze and report separately. Do not edit the frozen preprint or previous data.

@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "source_release": "local-circuit-preprint-20261109-table-reference",
+  "documents": {
+    "input-and-horizon-dependent-structural-fidelity-preprint-en.pdf": {
+      "old_name": "local-circuit-aggregation-preprint-en.pdf",
+      "sha256": "a3d6e8a4e13033899edac5ee4cc4fde0a1e7928a6ac29f50e273f1023ebebc39",
+      "byte_identical": true
+    },
+    "input-and-horizon-dependent-structural-fidelity-preprint-en.docx": {
+      "old_name": "local-circuit-aggregation-preprint-en.docx",
+      "sha256": "9709247250153801e5edd9170f5f40fc8d1d9e4339e137fd29bf34f4f7df6904",
+      "byte_identical": true
+    },
+    "input-and-horizon-dependent-structural-fidelity-preprint-zh.pdf": {
+      "old_name": "local-circuit-aggregation-preprint-zh.pdf",
+      "sha256": "ff946adcf4e7b0b96fcce12e174b7b0121025d964a17de8951869c0f4bcea2b3",
+      "byte_identical": true
+    },
+    "input-and-horizon-dependent-structural-fidelity-preprint-zh.docx": {
+      "old_name": "local-circuit-aggregation-preprint-zh.docx",
+      "sha256": "c95e4e476b2cbd51fd1ed576155d3680ebd722780f785537084ff56fe4deea3d",
+      "byte_identical": true
+    }
+  },
+  "content_and_pdf_metadata_unchanged": true
+}

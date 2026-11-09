@@ -1,0 +1,185 @@
+{
+  "title": "Finite-horizon perturbation response and training-activity structural predictors",
+  "written_utc": "2026-10-23T04:05:20.184446+00:00",
+  "scope": "Exploratory follow-up; fixed before new scientific simulations; existing model and graphs unchanged",
+  "graphs": [
+    "original",
+    "A_degree_92001",
+    "A_degree_92002",
+    "A_degree_92003",
+    "A_degree_92004",
+    "A_degree_92005",
+    "B_aligned_92001",
+    "B_aligned_92002",
+    "B_aligned_92003",
+    "B_aligned_92004",
+    "B_aligned_92005",
+    "C_random_92001",
+    "C_random_92002",
+    "C_random_92003",
+    "C_random_92004",
+    "C_random_92005"
+  ],
+  "graph_independence": "15 conditional surrogates of one original; not 15 independent original networks",
+  "steps": 1000,
+  "dt_ms": 0.1,
+  "duration_ms": 100,
+  "units_per_chunk": 100,
+  "chunks": 125,
+  "routing": "explicit canonical source order only",
+  "conditioning": {
+    "targets": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "strength_per_slot": 150.0,
+    "slots": [
+      0,
+      80
+    ],
+    "new_location": true
+  },
+  "perturbation": {
+    "targets": [
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "slots": [
+      200,
+      210
+    ],
+    "conditions": {
+      "baseline": 0.0,
+      "small": 1.5,
+      "double": 3.0
+    },
+    "relative_per_slot_to_conditioning": [
+      0,
+      0.01,
+      0.02
+    ],
+    "dose_per_target_unit": [
+      0,
+      15,
+      30
+    ],
+    "timing": "pre-step injection; state row n recorded at completed time (n+1)*0.1ms"
+  },
+  "model": "Frozen placeholder current-like leaky integration; no new physical unit calibration or dt convergence claim",
+  "refractory": "Pre-update until>slot gates membrane and channel decay; arriving inputs/field still accumulate. until=n+2 after spike skips only next slot.",
+  "new_observation_fields": "10 pre_refractory_until,11 actually_stepped,12 refractory_kernel_skipped,13 events_due_before_step; original ten fields preserved",
+  "training": "Only old original/module_burst source counts; uncentered SVD; state scales also frozen on this old reference",
+  "predictors": {
+    "primary": "E/I-stacked relative ||Delta W U5||F",
+    "secondary": [
+      "training-only90% basis",
+      "full training source replay distortion"
+    ],
+    "controls": [
+      "matched Frobenius constant",
+      "absolute reciprocal/triangle count change",
+      "leading source singular-subspace distance",
+      "singular value distance",
+      "old module state error"
+    ]
+  },
+  "primary_outcome": "RMS of standardized [(graph perturbed - graph baseline) - (original perturbed - original baseline)], over slots200:1000, for each amplitude separately",
+  "other_outcomes": [
+    "same-graph perturbation response magnitude/peak/AUC",
+    "baseline graph trajectory error vs original",
+    "relative response fidelity using original response as denominator",
+    "amplitude linearity diagnostic r_double vs 2*r_small",
+    "spike-count perturbation response error",
+    "source basis coverage on new original trajectory, never refit"
+  ],
+  "windows": {
+    "conditioning": [
+      0,
+      80
+    ],
+    "pre_perturbation": [
+      80,
+      200
+    ],
+    "pulse": [
+      200,
+      210
+    ],
+    "early": [
+      210,
+      300
+    ],
+    "middle": [
+      300,
+      500
+    ],
+    "late": [
+      500,
+      1000
+    ],
+    "terminal": [
+      900,
+      1000
+    ],
+    "primary_response": [
+      200,
+      1000
+    ]
+  },
+  "recovery": "After global response peak, earliest sample remaining below5%peak through end of recorded horizon with >=50 remaining slots. Otherwise right-censored. Zero responses separate. This is empirical window recovery, not an attractor/stability proof.",
+  "prediction_evaluation": "15 graph-level values per amplitude, original excluded; prespecified positive-direction Spearman; all points, within-arm n5, leave-one-arm-out n10 sensitivities; constant guard1e-12. No p-values, no refitting, no choosing successful ranks after test.",
+  "predeclared_failures": [
+    "new input activity largely outside frozen U",
+    "small perturbation is gated or generates no spike response",
+    "prediction only separates treatment arms",
+    "directions disagree between amplitudes",
+    "small own response but poor original-response fidelity",
+    "no recovery in finite window"
+  ],
+  "technical_gates": [
+    "frozen library/input identity",
+    "independent kernel/refraction fixtures",
+    "first300slot bridge to old module reference",
+    "all48 finite states and within-chunk equality",
+    "preperturbation exact bitwise identity to own baseline",
+    "refractory and actual execution flags independently checked",
+    "full fresh reproduction"
+  ],
+  "preprint_action": "No manuscript changes in this experiment"
+}

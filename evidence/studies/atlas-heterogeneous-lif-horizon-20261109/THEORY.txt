@@ -1,0 +1,87 @@
+New binary64 common-spike-region enclosure: scope and derivation
+
+This is a new finite-horizon certificate for the exported Atlas reference-f64
+LIF update, not an application of the legacy binary32 or dormant-kernel theorem.
+The model JSON and native binary hash are part of the claim. Source event order,
+uniform one-tick delay, reset, refractory eligibility, and rounding operation
+order are fixed. The arithmetic uses binary64 round-to-nearest ties-to-even,
+no FMA, and finite nonoverflowing states. The selected study has fixed positive
+time constants. Enclosures are rejected if a voltage bound is nonfinite.
+
+Parameter contract
+One scalar representable binary64 alpha, |alpha|<=rho<=1/4, changes selected
+incoming weights to RN(w*RN(1+sign*alpha)); sign is -1,0,+1. The family contains
+multiple actual floating configurations, not a real-arithmetic identity
+asserted for an unspecified quantizer. Arbitrary real alpha may be mapped to
+a representable value by an explicitly bounded quantization rule; that extra
+claim is not made here. All support, delays, neuronal parameters and inputs
+remain fixed. All four postsynaptic neurons in both targets are checked.
+
+Representation and roundoff bound
+Represent each scalar state by m+a*alpha+delta, |delta|<=e, e>=0. Centers and
+slopes are binary64 values; e is calculated using upward nextafter on positive
+sums/products. Let u=2^-53, gamma=32u=2^-48, tiny=64*2^-1074.
+For the at-most-eight primitive operations in each local expression, gamma
+exceeds gamma_8=8u/(1-8u). An absolute expression condition sum, with every
+input replaced by |m|+|a|rho+e and coefficient bounds rounded upward, bounds
+roundoff even under cancellation. The additive tiny term bounds gradual
+underflow; for voltage it is enlarged by (1+1/tau). No signed cancellation is
+assumed in radius calculations. The exact constant base is RN(-.065+.018).
+Point arithmetic is audited against exported Atlas traces and separately
+rounded exact rational primitive operations.
+
+Synaptic decay
+The executable expression is RN(RN(c*x)+x), c=RN(-dt/tau_syn).
+Write b=RN(1+c), db>=|b-(1+c)|. The new center follows that expression, slope
+RN(b*a). A conservative slope defect is
+ ds >= db*|a| + gamma*|b*a|.
+The propagated residual is at most (|b|+db)*e + rho*ds + 2*R,
+where R>=gamma*(1+|c|)*mag(x)+tiny bounds executable-expression roundoff.
+The factor two covers actual-expression and center-expression rounding.
+
+Weight addition
+The ideal parameterized event is w+sign*w*alpha. Since sign is -1,0,+1,
+its formation error is <=gamma*|w|*(1+rho)+tiny. The new slope is
+RN(a+sign*w); its error is <=gamma*(|a|+|sign*w|)+tiny. Add the old radius,
+weight error, rho times slope error and twice the rounded-addition error.
+Unchanged weights receive the same conservative bound. The common affine
+coefficient retains cancellation between positive and negative direction
+components; no independent-alpha box is substituted.
+
+Eligible voltage update
+Actual operation order is
+ RN(RN(RN(dt*RN(RN(base+RN(drive+ge))-RN(gi+v)))/tau)+v).
+Its real affine expression is b*v + h*(base+drive+ge-gi), h=dt/tau,b=1-h.
+The code uses h0=RN(dt/tau), b0=RN(1-h0), dh>=|h0-h| and
+db>=|b0-(1-h0)|. The slope defect includes
+ db*|a_v| + dh*(|a_ge|+|a_gi|)
+ plus gamma times |b0*a_v|+|h0|*(|a_ge|+|a_gi|).
+The dh contribution to b=1-h is included as dh*|a_v| in the slope defect
+and dh in the old-voltage residual coefficient. This was corrected in the
+algebra audit before any scientific certification query.
+The expression roundoff condition sum is
+ mag(v) + h_upper*(|base|+|drive|+mag(ge)+mag(gi)+mag(v)).
+Propagate radii using |b0|+db+dh and h_upper=|h0|+dh, add rho times slope
+error and twice the expression-roundoff bound. Reset sets (m,a,e)=(-.060,0,0).
+Refractory clamps voltage but not synaptic currents.
+
+Induction and guard contract
+At each reference-eligible threshold, silent steps require the upward bound
+strictly below theta; spiking steps require the downward bound >=theta.
+All reference spikes therefore agree. Reset and subsequent refractory times
+agree. Every unaffected neuron receives identical presynaptic spike events;
+affected neurons receive their altered weights in the same event order.
+By induction, the entire network's per-neuron discrete spike trajectory
+agrees through the stated prefix. Continuous voltages/currents need not agree.
+Reference source streams give an exact first-divergence witness: they remain
+valid until that first divergence, not after it.
+
+Failure is not a counterexample
+An interval guard failure only means this sufficient proof did not close.
+Only a point replay discrepancy supplies a failure upper bound; selected
+witnesses are checked in the full Atlas network. A certified positive lower
+radius is not the maximal safe radius. Endpoint agreement alone never proves
+a region. Horizons are nested on the same continued input/reference; true
+safe sets shrink with horizon, but numerical lower bounds are conservative.
+Unresolved brackets, zero-radius proof failures, capped radii and low resolved
+coverage must all remain in the report.

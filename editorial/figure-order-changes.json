@@ -1,0 +1,142 @@
+{
+  "en": [
+    {
+      "before": "\n\n[[FIG:15]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:16]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:17]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:18]]",
+      "after": ""
+    },
+    {
+      "before": "switches (Table 19).",
+      "after": "switches (Table 19; Figure 15, panel A)."
+    },
+    {
+      "before": "Table 24 preserves graph-level counts rather than pooling the swaps into an independent sample.",
+      "after": "Table 24 and Figure 16 (left) preserve graph-level counts rather than pooling the swaps into an independent sample."
+    },
+    {
+      "before": "Figure 17, presented below with direction scores, places the complete equality-label composition beside score agreement.",
+      "after": "Figure 17 (left) shows the complete equality-label composition; the right panel is discussed in Section 4.12."
+    },
+    {
+      "before": "Figure 18 displays every matched bound, including the conditions that do not satisfy the strict test.",
+      "after": "Figure 18 (left) displays every matched bound, including the conditions that do not satisfy the strict test."
+    },
+    {
+      "before": "Time rearrangement changes 522/1,434 global and 370/1,404 matched-focal orders (36.40% and 26.35%).",
+      "after": "Time rearrangement changes 522/1,434 global and 370/1,404 matched-focal orders (36.40% and 26.35%; Figure 15, panel B)."
+    },
+    {
+      "before": "versus 0.471–0.555 for frozen G_B scores.",
+      "after": "versus 0.471–0.555 for frozen G_B scores (Figure 16, right)."
+    },
+    {
+      "before": "The graph-specific counts are 120/244, 154/327 and 120/258.",
+      "after": "The graph-specific counts are 120/244, 154/327 and 120/258 (Figure 18, right)."
+    },
+    {
+      "before": "Input-conditioned F_H joint-score macro agreement is 0.994–1.000 at 30 ms and 0.753–0.826 at 300 ms;",
+      "after": "Input-conditioned F_H joint-score macro agreement is 0.994–1.000 at 30 ms and 0.753–0.826 at 300 ms (Figure 17, right);"
+    },
+    {
+      "before": "[[TABLE:19]]",
+      "after": "[[TABLE:19]]\n\n[[FIG:15]]"
+    },
+    {
+      "before": "[[TABLE:24]]",
+      "after": "[[TABLE:24]]\n\n[[FIG:16]]"
+    },
+    {
+      "before": "\n\n4.8 Nonzero perturbations can be certified without state equality",
+      "after": "\n\n[[FIG:17]]\n\n4.8 Nonzero perturbations can be certified without state equality"
+    },
+    {
+      "before": "\n\n4.10 Equal budget direction order changes across inputs",
+      "after": "\n\n[[FIG:18]]\n\n4.10 Equal budget direction order changes across inputs"
+    },
+    {
+      "before": "resolved sets. Short-window",
+      "after": "resolved sets (Table 25). Short-window"
+    }
+  ],
+  "zh": [
+    {
+      "before": "\n\n[[FIG:15]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:16]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:17]]",
+      "after": ""
+    },
+    {
+      "before": "\n\n[[FIG:18]]",
+      "after": ""
+    },
+    {
+      "before": "则有3/19切换（表19）。",
+      "after": "则有3/19切换（表19；图15 A）。"
+    },
+    {
+      "before": "表 24 保留图级计数，没有将交换合并为独立样本。",
+      "after": "表 24 与图 16 左图保留图级计数，没有将交换合并为独立样本。"
+    },
+    {
+      "before": "后文图 17 并列展示完整相等性标签构成与评分一致率。",
+      "after": "图 17 左图展示完整相等性标签构成，右图在第4.12节讨论。"
+    },
+    {
+      "before": "图 18 展示全部配对界，也保留不满足严格判据的条件。",
+      "after": "图 18 左图展示全部配对界，也保留不满足严格判据的条件。"
+    },
+    {
+      "before": "（36.40%、26.35%）。",
+      "after": "（36.40%、26.35%；图15 B）。"
+    },
+    {
+      "before": "冻结 G_B 评分为 0.471–0.555，",
+      "after": "冻结 G_B 评分为 0.471–0.555（图 16 右图），"
+    },
+    {
+      "before": "各图分别为 120/244、154/327、120/258。",
+      "after": "各图分别为 120/244、154/327、120/258（图 18 右图）。"
+    },
+    {
+      "before": "在 300 ms 为 0.753–0.826；",
+      "after": "在 300 ms 为 0.753–0.826（图 17 右图）；"
+    },
+    {
+      "before": "[[TABLE:19]]",
+      "after": "[[TABLE:19]]\n\n[[FIG:15]]"
+    },
+    {
+      "before": "[[TABLE:24]]",
+      "after": "[[TABLE:24]]\n\n[[FIG:16]]"
+    },
+    {
+      "before": "\n\n4.8 非零扰动可在连续状态不同的情况下获认证",
+      "after": "\n\n[[FIG:17]]\n\n4.8 非零扰动可在连续状态不同的情况下获认证"
+    },
+    {
+      "before": "\n\n4.10 同预算方向的安全顺序随输入变化",
+      "after": "\n\n[[FIG:18]]\n\n4.10 同预算方向的安全顺序随输入变化"
+    },
+    {
+      "before": "0.567–0.734 与 0.526–0.585。seed100",
+      "after": "0.567–0.734 与 0.526–0.585（表 25）。seed100"
+    }
+  ]
+}

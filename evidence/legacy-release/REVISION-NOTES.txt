@@ -1,0 +1,30 @@
+9 November 2026 final minor editorial revision
+
+- Focused bilingual abstracts; English abstract is 190 words. Kept 9/19 and 16/17.
+- Reported actual paired-dose means: slot L1 1.0659 to 1.1463; count L1 0.2783 to 0.4380, approximately 1% to 10% edits.
+- Explicitly rejected decorrelation or saturation interpretations of normalized L1 near one. Retained nonmonotonic chains and the absence of a general dose law.
+- Explained matched-focal 1/19: one counterexample defeats exact amplitude-multiset sufficiency, but 18/19 retain binary visibility labels; unchanged labels need not mean unchanged trajectories.
+- Corrected numeric-list separation, mathematical subscripts, norm rendering and the appendix cross-reference.
+- Rebuilt from newly regenerated analysis CSVs and checked bilingual tables, citations, equations and rendered pages.
+- No new scientific runs, radius searches or experiments. All immutable evidence and previous release preserved.
+
+Previous integration notes
+
+9 November 2026 editorial integration — no additional scientific conditions
+
+- Rewrote both abstracts, discussion and conclusions around input-summary
+  insufficiency and readout-dependent discrepancy, retaining one-graph scope.
+- Added locked total-drive and per-node-amplitude-multiset input controls with
+  own-input references, negative transfer, search stops and exclusion counts.
+- Added retrospective 2x2 score factors on common eligible masks, coverage and
+  conservative radius-ratio strata. No isolated threshold-margin causal claim.
+- Added retrospective ten-chain 14/28/141-exchange dose comparison, exact paired
+  magnitude/retained-fraction decomposition, nonmonotonicity and undefined zeros.
+- Preserved all previous experiments, propositions, proof boundaries, failed
+  lower-budget continuation decision and timing limitations.
+- Kept 23 references, moved the existing pruning citation before threshold theory,
+  synchronized display labels and bilingual numeric tables. Fixed normalization
+  explicitly as raw D_slot/147600 and D_count/147600 for the paired-dose study.
+- Made the current reproduction entry point analysis-only: archived inputs to
+  newly computed CSVs to figure to bilingual DOCX. No radius or network call.
+- Public repository/DOI remains unassigned. No publication or external upload.

@@ -1,0 +1,140 @@
+Activity-guided retention driver: interface and execution contract
+================================================================
+
+This driver reuses the explicit-only instrumentation in
+output/local-circuit-preprint-20261024-input-readout/evidence/sensitivity/experiment.rs
+with the unchanged frozen source library. It changes the external input source
+from a hardcoded InputProtocol to a validated event CSV. There is no initial
+condition intervention and no raw-sum or approximate proxy path.
+
+Compile using rustup run 1.98.1 rustc, edition 2024 and opt-level 3. Build the
+library from source/src/lib.rs as crate next_brain, then link experiment.rs
+against that library. The scientific runner must freeze its protocol, event
+tables and code hashes before any simulate command.
+
+Commands
+--------
+experiment simulate GRAPH.csv EVENTS.csv PREFIX
+experiment check-initialization
+
+There are exactly three arguments after simulate. There is no optional initial
+voltage file, protocol name, seed, stimulus generator, or adaptive input rule.
+check-initialization accepts no arguments and only constructs and compares
+objects: zero simulation steps and zero injected events.
+
+The fixed setting remains 125 chunks, 100 units/chunk, dt 0.1 and 300 slots.
+All units start at V=-65. Population IDs are E 0..99 and I 100..124. The
+canonical source-sorted EventRouter, frozen neuron kernel, scheduler and
+simulation-loop order are unchanged.
+
+Input tables
+------------
+GRAPH.csv retains the exact header arm,source,target,weight_bits,delay.
+The five fields are unsigned decimal integers. The historical parser preserves
+row order within each projection arm. It requires positive finite weights,
+delay 1, correct E/I arms, no self-loop and no duplicate directed pair.
+
+EVENTS.csv has the exact header slot,target,amplitude_bits. Each subsequent
+line must contain three unsigned decimal u32 integers with no whitespace,
+sign or empty field. The slot must satisfy 0 <= slot < 300; target must satisfy
+0 <= target < 100. amplitude_bits is the IEEE-754 f32 bit pattern of a strictly
+positive finite amplitude. Zero, negative values, infinities and NaNs fail.
+Rows must be strictly lexicographically increasing by (slot,target). Duplicate
+targets within a slot, reversed targets or reversed slots fail. A header-only
+file is allowed and represents no external events. At most 30,000 rows can
+therefore be accepted. Omitted (slot,target) pairs inject no event.
+
+All event rows are validated before constructing the simulation scheduler.
+The file is not silently sorted, deduplicated, rescaled or normalized. It is
+consumed in the supplied canonical order and every row is asserted to have
+been injected exactly once by the end of the 300-slot run.
+
+Injection semantics
+-------------------
+For each slot, immediately before Scheduler::step, the driver injects that
+slot's rows using Scheduler::inject_event(DelayedEvent {
+    target_chunk: ChunkId(target),
+    target_slot: slot,
+    signal_strength: f32::from_bits(amplitude_bits),
+}).
+This is the same event construction and execution order as InputProtocol::inject
+with delay_slots=0. The inherited focal training input used ascending target
+IDs, so its canonical CSV equivalent preserves its input event order.
+Input injection queues an event; it does not itself update V or wake a chunk.
+The subsequent scheduler step handles due-event activation and delivery.
+
+Recurrent routing remains after the step, using the frozen EventRouter with
+source ChunkIds sorted canonically and strength scale 1.0. The historical graph
+delay 1 and existing scheduler slot advancement are unchanged. External events
+are not counted as recurrent messages or active-source edge visits.
+
+Initialization and diagnostics
+------------------------------
+The specialized scheduler constructor matches build_harness_scheduler for
+10,000 E / 2,500 I / 100 units per chunk, with the same coordinates,
+field_decay_tau 10, initial fields, empty queues and Dormant registration.
+Initial voltage is set to the default -65 before Scheduler::add_chunk. All
+historical initialization assertions are retained, including bit comparisons
+of the other fields against an independently constructed frozen harness.
+
+First-execution diagnostics retain the historical active_step_count check.
+Before each Scheduler::step the driver records V bits after input injection;
+the first count transition from 0 to 1 identifies a chunk's first execution.
+Those pre-update bits must still equal its default initial bits. A chunk that
+never executes has null first-execution diagnostics. Within-chunk equality and
+finiteness checks apply initially and after every slot to the same six f32
+arrays and the refractory array.
+
+Outputs
+-------
+PREFIX.bin: 300 x 125 x 10 unsigned 32-bit little-endian entries, slot-major,
+then ascending chunk ID, with exactly the historical ten fields:
+  spikes, voltage_bits, g_exc_bits, g_inh_bits, g_long_range_bits,
+  recovery_bits, local_exc_field_bits, local_inh_field_bits,
+  refractory_until, status (Dormant 0, Active 1, PendingWakeUp 2).
+Observations occur after recurrent routing.
+
+PREFIX.csv: exactly the historical header and columns:
+  step,spikes,recurrent_messages,active_source_edge_visits,active_chunks
+
+PREFIX.json retains all historical dimensions, instrumented_loop_seconds,
+timing_is_performance_benchmark=false, explicit mode, initial voltage bits,
+initialization assertions, 37,625 within-chunk checks and the two 125-element
+first-execution arrays. It adds:
+  external_input_events: number of validated rows actually injected;
+  external_input_total_amplitude_f64: sum of decoded event amplitudes in
+    canonical CSV order, accumulated in f64 without changing injected f32 bits;
+  external_input_order: strict_slot_target;
+  external_input_delay_slots: 0;
+  external_input_positive_finite: true;
+  external_input_summary_is_performance_measure: false.
+The amplitude sum counts one strength per target event; it is not multiplied
+by 100 units, converted into a physical quantity or treated as a performance
+measurement. These input summaries describe the fixed external drive only.
+
+All output paths must be unused. Existing .bin, .csv or .json files are rejected.
+
+Validation and protocol-freeze boundary
+--------------------------------------
+Before protocol freeze, the driver and frozen library were compiled with
+rustc 1.98.1 (48a229cea 2026-09-01), edition 2024 and opt-level 3. The driver
+compiled without warnings; the library retains its four existing unused-variable
+warnings. check-initialization passed with simulation_steps=0 and
+events_injected=0. No simulate command or scientific experiment was executed
+during driver preparation.
+
+After freezing the scientific protocol, the single inherited focal/training
+protocol is the mandatory archive-alignment gate: amplitude 150 on slots 0..79
+at excitatory targets 0,5,...,95, followed by no external events on slots
+80..299. Use inherited/original.csv and the corresponding canonical event
+table, then compare the complete 300 x 125 x 10 uint32 output exactly with
+state_bits in inherited/training-original.npz. Compare the complete count CSV
+byte-for-byte with inherited/training-original.csv. The gate must pass before
+scientific interpretation of any new condition. This study inherits only that
+training reference; its other input conditions are newly specified held-out
+inputs and are not additional historical-protocol replication gates.
+
+JSON has additional metadata and variable instrumented runtime, so whole-file
+JSON byte equality is not expected. Compilation and zero-step initialization
+do not establish whole-trajectory equivalence on their own; the post-freeze
+focal/training alignment gate remains required.

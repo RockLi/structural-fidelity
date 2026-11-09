@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "table_rows": 12,
+  "paired_rows": 30,
+  "comparison_rows": 6,
+  "gate_recomputed_from_pairs": true,
+  "source_sha256": "8f7a0e071db5ccac950b9b305925cc369627714b484c2cab5438e7f7f5c604a6",
+  "outputs": {
+    "activity-budget-boundary.pdf": "e5acece9215c05f06480d1d32d8735d106e045b4808faefefc697b5c48d14770",
+    "activity-budget-boundary.png": "9468e317e9e6839577b4095b69b56b05001376dddb6785f555430f1526e88edd",
+    "activity-budget-figure-data.json": "c6b12f2ec3fdff9acf4e56fc0cf1a2645813135aa31416c7ff2807abb2b19054",
+    "paired-comparison-values.csv": "8310a40d662d092e1cadeba5f448fc56a11a335378f62d9fa37d59b97f19af23",
+    "paired-values.csv": "92af803e568277f3cb818fa283875791a96136ae7204ddd649a4ce8511f0379e",
+    "table-values.csv": "ca15f2d85c8bd323da6e37853a03701fc4caaf0750115d14cf4f3f9008c6524c"
+  }
+}

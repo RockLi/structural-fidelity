@@ -1,0 +1,12 @@
+Read-only independent review confirms all original evidence markers retained.
+Two interventions remain distinct: endpoint exchanges versus fixed-support weights.
+Local frozen-source replay only establishes the first discrepancy; no claims
+about later divergent feedback. Nested-horizon witnesses require same-run prefixes.
+Ordered directions require disjoint certified-lower and actual-failure-upper bounds.
+Positive radii are sufficient regions, not maximal radii or asymptotic stability.
+LIF background regime, score floor, unresolved/capped outcomes and post hoc labels
+are preserved. All Eq25/26 edits are notation; native certifier source unchanged.
+Primary literature checked:
+https://www.usenix.org/conference/usenixsecurity18/presentation/wang-shiqi
+https://arxiv.org/html/2408.10900v1
+No external public archive identifier invented. No scientific execution in revision.

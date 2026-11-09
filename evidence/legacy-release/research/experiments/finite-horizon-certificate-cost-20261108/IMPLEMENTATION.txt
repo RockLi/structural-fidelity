@@ -1,0 +1,85 @@
+Same-certificate cost optimization — 8 November 2026
+
+Contract
+The mathematical certificate is exactly the one in the adjacent earlier audit's
+THEORY.txt and audit.py. This is NOT a new sufficient condition. All assumptions
+there remain: frozen binary32 operation order, nearest-even rounding, gradual
+underflow, no overflow, finite 300-slot horizon, same initial state and inputs,
+positive separated E/I events, two changed incoming targets, and identical
+execution/threshold/status branches. A failure remains inconclusive.
+
+Filter correctness
+Each R encloses an EXACT scalar value in the rational endpoint expressions.
+Binary32 input endpoints embed exactly in binary64. Each binary64 +,-,*,/ is
+expanded to the adjacent binary64 numbers. Interval multiplication uses all
+four products; division is used only for a positive denominator (1-m*2^-24).
+Abs, max, negation and interval composition preserve enclosure. The error
+terms, affine rewrite and final binary32 projection are the SAME as audit.py.
+
+For one desired rational lower endpoint l in [a,b], if floor32(a)=floor32(b),
+monotonicity proves floor32(l) is that same value. Apply the analogous test to
+ceil32 of the upper endpoint. If either equality cannot be established, call
+the original exact-rational operation. Therefore successful filtering does not
+introduce an extra outward float32 ULP, a changed rounding-error budget, or a
+changed guard. Positivity intersection for accumulation commutes with monotone
+projection; decay is NOT clipped, matching the original slightly negative
+interval endpoints even when the physical conductance is nonnegative.
+
+The adjacent-double helper uses IEEE bit stepping, equivalent to nextafter
+including signed zero, subnormal values and infinities. NaNs retain NaN behavior.
+The supported certificate domain is finite and far from binary64 overflow;
+this is not an arbitrary-input interval arithmetic library. The independent
+arithmetic checks compare the helper against math.nextafter on 40,026 inputs/
+directions, and 1,440 operation evaluations against the rational oracle,
+including all three forced fallback operations and one natural fallback.
+No proof assistant or new hardware/runtime portability certification is claimed.
+
+Input preparation
+Cache nonzero original source emission slots once in shared reference setup.
+Compute each incoming edge's binary32(weight*100) once, retain source-sorted
+order and append external arrivals last. Preserve due/pending event presence,
+including pending deliveries beyond the finite window. Vectorize reference
+flags and local-field copying. All four input arrays match the previous
+preparation bitwise on all 57 fixed cases. Source spike counts are 0 or100,
+verified by unchanged reference reconstruction. No candidate outcome is used.
+
+Fair comparison
+Both kernels live in kernel.c, compiled with the same optimization and no
+fast-math/FMA contraction. Both use the same ordered input arrays, local fields,
+two targets, 300-slot horizon and branch checks; both stop when their respective
+check fails. Full-horizon comparison of the 16 certified nonzero cases avoids
+comparing unequal early-stop work. Their reference-driven point replay checks
+one exact floating trajectory; the interval checker propagates the original
+state enclosures. Point replay is not a network simulation. Passing all local
+checks can itself establish branch/spike consistency by induction under the
+same frozen execution contract. The interval implementation has no exclusive
+claim to finite-horizon verification for these singleton candidates.
+
+Warm up both; alternate measurement order for 11 rounds of100 calls; batch
+inside C to amortize Python/ctypes overhead equally; neither timed kernel emits
+state traces. Store all rounds. Graph CSV read/support difference and shared
+ordered input construction are measured separately (three repetitions). Totals
+are sums of measured component medians, not one wall-clock deployment latency.
+Reference loading/validation/spike-index setup is one-time per input and is
+reported separately, never treated as free for a one-off application. Loaded
+input arrays are reusable for either method. Cache-warm OS file reads are not
+cold-storage benchmarks. Concurrent system load is not experimentally controlled.
+
+The old Python exact checker is rerun once per case as an oracle. Its timing
+includes its own input preparation and validation-trace construction, whereas
+native timing excludes traces for both algorithms. Thus old-to-new ratios are
+implementation-level measurements, not an algorithmic speedup over replay.
+Python, compiler and operating system versions are recorded in each summary.
+
+Validation and limits
+Compare every saved interval endpoint bitwise, all decisions, unresolved guard
+locations, operation counters and slack with the original exact code. Independent
+Python point replay matches the entire native replay prefix. Archived candidate
+states are read only after certification; compare them before the first global
+spike divergence, since later source activity need not match reference-clamped
+replay. A second process repeats the same checks and timings. Hashes verify the
+old audit and manuscript/evidence files are unchanged. There are no new network
+conditions, no new generalization evidence, no reduced graph traversal and no
+full-simulator speedup measurement. Arithmetic test vectors are not new network
+experiments. The observation that the native filter needs zero fallback calls
+on these archived cases says nothing about fallback rates on unseen networks.

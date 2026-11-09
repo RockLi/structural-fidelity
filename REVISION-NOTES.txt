@@ -1,0 +1,2 @@
+10 November 2026 final editorial revision
+Added body references for Table 9 and Tables S1, S2, S8–S13 in both languages. All table/figure/equation labels and scientific content unchanged. Added the actual public repository URL; no DOI assigned. Prior 9 November release retained. No new simulation or scientific analysis.

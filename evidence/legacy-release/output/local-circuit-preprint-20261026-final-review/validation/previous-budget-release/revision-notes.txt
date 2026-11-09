@@ -1,0 +1,40 @@
+26 October 2026 — Budget boundary closure
+
+The existing two main findings, propositions and finite-horizon corollary are
+retained. This revision adds a compact methods/results module on activity-guided
+structure selection, with four selectors and fixed adjacency replacement costs.
+
+The completed 9.912% study is included in full. Its original main endpoint was
+the mean over three held-out inputs; the figure's cross-budget comparison uses
+training-input outcomes for all budgets and is explicitly labelled accordingly.
+
+The new 0.984% and 1.968% budgets are exact prefixes of the same 640 candidate
+proposal paths, preserving all per-node, per-arm degree/strength/weight/delay
+constraints. The design, analysis, gate and all candidates were locked before
+new simulation. Direct float64 input residuals evaluate the same mathematical
+J objectives while preserving exact zero; historical scores/selections remain
+unchanged. Nested budgets/banks are dependent and do not add original networks.
+
+Both smaller budgets improve versus random, but the 0.984% comparator guards
+fail. The joint continuation gate therefore stops all new migration. Coactivity
+and shuffled select identical graphs in 9/10 banks per budget; no unique
+coactivity advantage, high raw-slot fidelity or transfer benefit is established.
+The complete record contains 58 new training conditions plus one technical
+repeat, 80 policy memberships, 1280 candidate graphs and all zero counts.
+
+New figure/table compare all selectors with zero-score/zero-spike outcomes.
+New native Word score equations remain editable. Moore and Chaudhuri (2020) is
+added as reference 19 with its restricted-model guarantees distinguished from
+this full-edge rewiring study. Prior references 1–18 and evidence are preserved.
+
+The updated reproduction drivers connect fresh simulation to new CSV, plots
+and both manuscript builds, enforcing the failed migration gate. Historical
+activity reproduction runs against a copied reference to preserve source hashes.
+Public deposition remains a separate action; no public ID is fabricated.
+
+The full fresh simulation-to-document path and the separate archived-trajectory
+reanalysis both passed. A final presentation pass keeps two small English
+tables and the Proposition 3 lead-in with its equation, preserves literal CSV
+identifiers, and spaces adjacent mathematical factors for native Word subscripts.
+Final documents are rebuilt from the fresh numerical outputs. No experimental
+code, numerical result, selection or stop rule changed during this pass.

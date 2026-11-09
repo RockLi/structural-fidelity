@@ -1,0 +1,169 @@
+Finite-horizon certification of nonzero graph perturbations
+Feasibility derivation — 8 November 2026
+
+1. Claim and scope
+
+Fix a deterministic, time-discrete spiking implementation, initial states and
+external inputs. Let the original run provide spike counts, executed/skipped
+steps, local fields, refractory deadlines and branch decisions for slots
+0,...,T-1. A candidate graph changes incoming edges only at a set A of targets.
+All other incoming edge streams, including their order, are unchanged.
+
+Construct candidate incoming event streams using ORIGINAL source spikes,
+including actual per-edge binary32 products, delivery slots, and event presence.
+This is a conditional input history, not a candidate closed-loop trajectory.
+Maintain sets enclosing candidate states under the original branch sequence.
+At each affected target and slot, require:
+  (i) the scheduler would execute/skip exactly as in the original;
+ (ii) if executed and refractory-eligible, the entire pre-reset voltage interval
+      is below theta when the original is silent, or at/above theta when it fires;
+(iii) the residual-dynamics and pending-event tests resolve to the same status
+      and next active-set membership as in the original;
+ (iv) refractory, reset and local-field updates use the proven common decisions.
+If these checks all pass, candidate emitted spikes, refractory deadlines,
+execution decisions and status labels agree through T-1. Candidate continuous
+states remain inside their certified intervals and need NOT equal the original.
+
+An unresolved guard means uncertified, NOT that the spikes must differ.
+The certificate makes no assertion about activity after the finite window,
+biological realism, stationary rates, robustness to new inputs, or floating
+point equivalence between different compilers/platforms.
+
+2. Proof (first-divergence/induction argument)
+
+At initialization the state enclosures contain the candidate state. Initial
+queues are empty here and initial statuses are Dormant. Suppose all earlier
+source emissions and all relevant branches agree. The candidate event streams
+constructed from original spikes are then exactly the streams delivered by the
+candidate graph up to this step, in their actual queue order. Due-event and
+future-pending flags therefore have their true candidate values. The scheduler
+check proves the execution decision agrees. Validated interval updates enclose
+the candidate conductances and pre-reset voltage. Check (ii) establishes the
+same spike decision, and thus the same reset and refractory deadline. Because
+local fields depend only on their previous values, execution and spike sums,
+they remain identical to the original and may be read from its archive. Check
+(iii) proves the same status and next active-set membership. Unaffected targets
+have identical incoming ordered streams, states and branches by the induction
+hypothesis and need not be recomputed. This closes the induction, jointly over
+all affected targets. A first output/branch disagreement is impossible while
+all certificates pass. The proof permits nonzero state/input differences.
+
+Reference-only processing per target is sound: it is the conjunction of all
+per-target guard checks, not a causal assumption that other changed targets
+remain correct without checking them.
+
+3. Exact-arithmetic kernel specialization and threshold margins
+
+For an executed target let gE+,gI+ be conductances after event and local-field
+addition. For an eligible update, with step h and long-range input zero:
+  v_pre = (1-h) v + h(gE+ - gI+),
+  gE_next = (1-h) gE+,   gI_next = (1-h) gI+.
+Refractory steps still add incoming events and local fields, but do not update
+voltage or decay conductances. Skipped chunks freeze their stored state.
+An agreed spike resets voltage difference to zero; it does not reset the
+conductance difference. Initial conductance/voltage differences are zero here.
+
+Along the common branch prefix, signed differences satisfy
+  delta_v_pre = (1-h) delta_v + h(delta_gE+ - delta_gI+),
+  delta_gq+ = delta_gq + delta_Iq,
+  delta_gq_next = (1-h) delta_gq+  (eligible), or delta_gq+ (refractory).
+Hence bounds can be propagated with resets, refractory holds and skipped steps.
+A symmetric sufficient condition is B_v_pre < |v_ref_pre - theta| for each
+eligible update with positive reference margin. A sharper one-sided version is
+  upper(v_candidate_pre) < theta        for a reference non-spike;
+  lower(v_candidate_pre) >= theta       for a reference spike.
+The implementation uses this one-sided interval condition. It is NOT limited
+to small absolute voltage changes. For example, a large negative excursion can
+remain on the silent side of the threshold. A zero reference margin merely
+makes a symmetric test useless; a one-sided test can still be decisive.
+
+The exact-arithmetic recurrence alone is NOT applied to the archived f32 data.
+The following additional bounds account for the actual numerical execution.
+
+4. Binary32 enclosure used in this audit
+
+Assume round-to-nearest ties-to-even IEEE binary32 operations in the frozen
+source order, finite values, gradual underflow, and no arithmetic reassociation.
+The actual h is binary32(0.1), and the decay multiplier is binary32(1-h), not an
+implicitly exact decimal 0.9. All bounds are computed with Python Fraction,
+so calculations in the proof checker are exact rational calculations.
+
+Use u=2^-24 and eta=2^-149. For a basic floating operation with exact result z,
+|fl(z)-z| <= u|z|+eta, provided no overflow. eta is deliberately conservative
+for underflow. Projection of an interval to the surrounding binary32 grid is
+outward: its low endpoint is the greatest float <= the rational lower bound;
+its high endpoint is the least float >= the rational upper bound. A binary64
+conversion only seeds these searches; exact rational comparisons validate the
+brackets. Nearest-even rounding for fixed products is selected by exact distances
+and the even low bit at ties. Thus binary64 double rounding is not trusted.
+
+For m sequential additions of known event amplitudes a_i (including the final
+local-field injection), let S=sum a_i, M=max(|g_lo|,|g_hi|),
+ gamma_m=m*u/(1-m*u), assuming m*u<1.
+An enclosure of the actual rounded sum is
+ [g_lo+S, g_hi+S] +/- [gamma_m(M+sum|a_i|)+m*eta/(1-m*u)].
+This avoids executing each binary32 addition in the checker, although constructing
+its sum still visits the incoming events in the current implementation. For the
+positive E/I conductances, intersecting the enclosure with [0,infinity) is sound.
+
+To retain voltage contraction, use the affine expression (1-h)V+h(E-I) and
+account for the rounding of the ORIGINAL expression, rather than naively using
+interval V + h*(-V+...). Let ||X||=max(|X_lo|,|X_hi|):
+ S=E-I;             r1=u||S||+eta;
+ Z=-V+(S +/- r1);   r2=u||Z||+eta;
+ P=h*(Z +/- r2);    r3=u||P||+eta;
+ Q=V+(P +/- r3);    r4=u||Q||+eta.
+Then the actual pre-reset voltage is enclosed by
+ (1-h)V+h(E-I) +/- [h(r1+r2)+r3+r4], projected outwards.
+Multiplication by eligibility=1 and adding the exactly-zero long-range channel
+are exact. Eligibility=0 is handled as the refractory hold. Decay uses the
+rounded multiplier d and an additional u*d*||G||+eta error bound.
+
+No quantitative input-error objective or candidate post-run state is needed to
+accept a certificate. Reference state is used to supply local fields and expected
+branches; candidate states are opened only afterward to check recorded outcomes
+and containment. These are computational certificates under this execution
+contract, not a formal proof-assistant verification of the software or hardware.
+
+5. Scheduling details specific to the frozen implementation
+
+Recurrent emission at slot n is queued after Scheduler::step has incremented
+current_slot. Stored delay=1 therefore arrives at n+2. External nonzero input
+is appended last and delivered at n. Before routing the just-emitted spike,
+future pending events at slot n come from emissions at n-1; these are included
+even if their arrival n+1 lies beyond the observation window. The checker uses
+the exact incoming graph support, not merely a signed sum of input amplitudes.
+
+Chunk::step returns is_active (despite an outdated scheduler variable name
+spike_produced). A chunk is kept active by spikes, due-event presence, hot
+local fields, hot conductances, or the scheduler's remaining pending events.
+The checker reproduces both the chunk status and scheduler active-set decision.
+If a continuous-state interval straddles a dynamics tolerance and neither due
+events, spikes nor fields already settle the disjunction, the result is
+inconclusive. Initial or zero-weight wake-up modifications are outside the
+present graph family (all edges are strictly positive). A generalization must
+retain those event-presence effects explicitly.
+
+6. Relation to the existing corollary and prior work
+
+The earlier exact-input corollary implies equality of states. This sufficient
+condition instead permits unequal continuous states while certifying matching
+spikes and execution branches. It covers a different, weaker fidelity target.
+It uses standard hybrid-system guard preservation, interval enclosures and
+floating-point error analysis; these general ideas are not claimed to be new.
+Novelty, if any, would require a useful implementation and independently tested
+coverage/cost for structural perturbations, not this induction alone.
+
+Relevant established context:
+Jahnke, Memmesheimer & Timme (2009), How chaotic is the balanced state?
+https://doi.org/10.3389/neuro.10.013.2009
+Monteforte & Wolf (2012), Dynamic Flux Tubes Form Reservoirs of Stability in
+Neuronal Circuits. https://doi.org/10.1103/PhysRevX.2.041007
+These study different dynamical settings and do not directly supply the specific
+frozen-kernel certificate implemented here. No literature-priority claim is made.
+
+Floating-point background: Goldberg (1991), What Every Computer Scientist Should
+Know About Floating-Point Arithmetic (authorized edited reprint):
+https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+The specific rational enclosure and branch checks above are derived here; the
+floating-point relative-error framework is established, not a novelty claim.

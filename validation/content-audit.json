@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "immutable_evidence_manifest_files": {
+    "legacy-release": 7911,
+    "multigraph-input-validation-20261109": 1585,
+    "cross-generator-validation-20261109": 3057,
+    "atlas-heterogeneous-lif-horizon-20261109": 2813
+  },
+  "original_external_hashes_checked": 8,
+  "posthoc_strict_shrink": 710,
+  "posthoc_changed_order": 394,
+  "posthoc_common_order": 829,
+  "bilingual_new_numeric_tables_equal": true,
+  "all_old_tables_and_figures_retained": true,
+  "equation_figure_reference_labels_equal": true,
+  "documents": {
+    "en": {
+      "paragraphs": 564,
+      "tables": 30,
+      "figures": 25,
+      "references": 27,
+      "sha256": "fe3f76fc659caa4030aaba32c64784e09708c90ebf35886153f08b1c791f1110",
+      "all_legacy_table_cells_equal": true,
+      "all_legacy_figure_images_preserved": true,
+      "citations_in_first_appearance_order": true
+    },
+    "zh": {
+      "paragraphs": 566,
+      "tables": 30,
+      "figures": 25,
+      "references": 27,
+      "sha256": "0dbd6bcb8dc215e742e28602fb609bbabd125c0ab70670585d88425bc863f711",
+      "all_legacy_table_cells_equal": true,
+      "all_legacy_figure_images_preserved": true,
+      "citations_in_first_appearance_order": true
+    }
+  },
+  "no_simulations_or_radius_searches_in_revision": true
+}

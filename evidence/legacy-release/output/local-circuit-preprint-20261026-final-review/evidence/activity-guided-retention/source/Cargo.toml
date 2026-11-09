@@ -1,0 +1,33 @@
+[package]
+name = "next-brain"
+version = "0.1.0"
+edition = "2024"
+description = "A Rust runtime for scalable approximate neural dynamics simulation."
+
+[lib]
+name = "next_brain"
+path = "src/lib.rs"
+
+[dependencies]
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "bench_a_data_layout"
+harness = false
+
+[[bench]]
+name = "bench_b_sparse_scheduling"
+harness = false
+
+[[bench]]
+name = "bench_c_memory_floor"
+harness = false
+
+[[bench]]
+name = "bench_d_lpu_replacement"
+harness = false
+
+[[example]]
+name = "measure_lpu_resources"

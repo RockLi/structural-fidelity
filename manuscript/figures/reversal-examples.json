@@ -1,0 +1,174 @@
+[
+  {
+    "pair": 0,
+    "targets": [
+      11,
+      91
+    ],
+    "inputs": [
+      "tonic",
+      "global_burst"
+    ],
+    "directions": [
+      0,
+      5
+    ],
+    "records": [
+      {
+        "pair": "0",
+        "probe": "tonic",
+        "direction": "0",
+        "lower": "0.02587890625",
+        "upper": "0.026611328125",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "12",
+        "witness_t": "0.026611328125",
+        "witness_slot": "21",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "53"
+      },
+      {
+        "pair": "0",
+        "probe": "tonic",
+        "direction": "5",
+        "lower": "0.016357421875",
+        "upper": "0.01708984375",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "12",
+        "witness_t": "0.01708984375",
+        "witness_slot": "89",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "53"
+      },
+      {
+        "pair": "0",
+        "probe": "global_burst",
+        "direction": "0",
+        "lower": "0.011962890625",
+        "upper": "0.0123291015625",
+        "stop": "bracket_tolerance",
+        "refinements": "5",
+        "queries": "10",
+        "witness_t": "-0.0123291015625",
+        "witness_slot": "80",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "74"
+      },
+      {
+        "pair": "0",
+        "probe": "global_burst",
+        "direction": "5",
+        "lower": "0.017822265625",
+        "upper": "0.0185546875",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "12",
+        "witness_t": "-0.0185546875",
+        "witness_slot": "80",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "74"
+      }
+    ],
+    "selection": "first lexicographic resolved reversal, not largest effect or predictor success"
+  },
+  {
+    "pair": 0,
+    "targets": [
+      11,
+      91
+    ],
+    "inputs": [
+      "tonic",
+      "focal_burst"
+    ],
+    "directions": [
+      0,
+      2
+    ],
+    "records": [
+      {
+        "pair": "0",
+        "probe": "tonic",
+        "direction": "0",
+        "lower": "0.02587890625",
+        "upper": "0.026611328125",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "12",
+        "witness_t": "0.026611328125",
+        "witness_slot": "21",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "53"
+      },
+      {
+        "pair": "0",
+        "probe": "tonic",
+        "direction": "2",
+        "lower": "0.0830078125",
+        "upper": "0.0859375",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "13",
+        "witness_t": "0.0859375",
+        "witness_slot": "21",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "53"
+      },
+      {
+        "pair": "0",
+        "probe": "focal_burst",
+        "direction": "0",
+        "lower": "0.01123046875",
+        "upper": "0.0115966796875",
+        "stop": "bracket_tolerance",
+        "refinements": "5",
+        "queries": "10",
+        "witness_t": "-0.0115966796875",
+        "witness_slot": "67",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "6"
+      },
+      {
+        "pair": "0",
+        "probe": "focal_burst",
+        "direction": "2",
+        "lower": "0.00390625",
+        "upper": "0.00408935546875",
+        "stop": "bracket_tolerance",
+        "refinements": "6",
+        "queries": "11",
+        "witness_t": "0.00408935546875",
+        "witness_slot": "67",
+        "witness_target": "91",
+        "witness_reason": "threshold-inconclusive",
+        "projection_nonzero": "True",
+        "net_projection_nonzero": "True",
+        "target_spike_slots": "6"
+      }
+    ],
+    "selection": "first lexicographic resolved reversal, not largest effect or predictor success"
+  }
+]

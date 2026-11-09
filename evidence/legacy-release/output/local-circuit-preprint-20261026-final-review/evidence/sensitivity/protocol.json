@@ -1,0 +1,127 @@
+{
+  "title": "Minimal legal rewiring and initial-voltage sensitivity calibration",
+  "written_utc": "2026-10-24T11:34:38.331494+00:00",
+  "status": "Prospectively fixed exploratory follow-up to inspected preprint results; not independent preregistration",
+  "family": "homogeneous only; one original E/I block-random graph",
+  "scope": "Calibrate existing identified-chunk trajectory differences, not infer optimal topology or chaos",
+  "chunks": 125,
+  "units_per_chunk": 100,
+  "dt_ms": 0.1,
+  "steps": 300,
+  "probes": [
+    "tonic",
+    "global_burst",
+    "focal_burst"
+  ],
+  "kernel": "Unchanged frozen canonical-routing library, including dormant/refractory semantics",
+  "swap": {
+    "seeds": [
+      93001,
+      93002,
+      93003,
+      93004,
+      93005,
+      93006,
+      93007,
+      93008,
+      93009,
+      93010,
+      93011,
+      93012,
+      93013,
+      93014,
+      93015,
+      93016,
+      93017,
+      93018,
+      93019
+    ],
+    "arms": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "allocation": "EE/EI/IE/II:5/5/5/4; report all, no output-based selection",
+    "operation": "one legal same-arm, same-weight-bit, same-delay target swap from original; preserve source/row/weight/delay",
+    "source_activity_check": "Shared-original-source input discrepancy, only slots0:298 arriving by slot299 via n+2; zero drive is reported separately",
+    "sampling": "Independent seeded first legal proposal within each preassigned arm; this is a local intervention, not a fully randomized null graph"
+  },
+  "initial_voltage": {
+    "seeds": [
+      94001,
+      94002,
+      94003,
+      94004,
+      94005,
+      94006,
+      94007,
+      94008,
+      94009,
+      94010,
+      94011,
+      94012,
+      94013,
+      94014,
+      94015,
+      94016,
+      94017,
+      94018,
+      94019
+    ],
+    "doses": [
+      0.0001,
+      0.001,
+      0.01
+    ],
+    "direction": "Independent seeded balanced signs:100E=50minus/50plus,25I=12minus/12plus/1zero; same direction across doses",
+    "units": "Uncalibrated model coordinate, not mV; record actual f32 magnitudes/ULPs",
+    "placement": "Before scheduler registration, all100 units in chunk share V; all other states unchanged",
+    "activation": "No added wake-up. Initial blocks remain Dormant; first executed voltage must equal supplied initial bits",
+    "interpretation": "Local starting-state calibration; contraction and common resets may erase differences; not online pulse robustness or Lyapunov test"
+  },
+  "scientific_runs": {
+    "original": 3,
+    "single_swap": 57,
+    "initial_jitter": 171,
+    "total": 231
+  },
+  "technical_sham_runs": 6,
+  "archived_comparison": "57 explicit extensive-rewiring runs from19 controls x3 probes, plus3 original reference trajectories; reanalysed, not counted as new",
+  "primary_metrics": [
+    "same1ms-bin normalized identified-chunk and population spike L1 as archived study",
+    "per-graph population/chunk ratio and1minusratio; undefined when chunk error zero",
+    "all19 values, median, range, zero counts per probe/control/dose"
+  ],
+  "diagnostics": [
+    "raw slot chunk mismatch and first spike divergence",
+    "fixed-original-channel standardized V/gE/gI RMS in0:80,80:150,150:300 and0:300",
+    "shared-source swap input mismatch and whether its difference can arrive within horizon",
+    "initial perturbation actual first-execution bits and first common reset/state recoincidence"
+  ],
+  "statistics": "Conditional descriptive calibration. No p-values, confidence intervals, pooled independent-amplitude counts, treatment optimisation, or threshold chosen after outcomes",
+  "gates": [
+    "All201 inherited files identical",
+    "initialization-only audit before any stepping",
+    "3 new originals exact legacy states/counts",
+    "3zero and3inverse-swap shams exact",
+    "all231 count/state files consistent and finite",
+    "new analysis then clean-directory independent rerun"
+  ],
+  "exclusions": "No new original networks, no heterogenous-unit kernel, no runtime benchmark, no proxy changes; no dose escalation after observing zero effects"
+}

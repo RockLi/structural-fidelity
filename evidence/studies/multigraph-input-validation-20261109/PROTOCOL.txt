@@ -1,0 +1,119 @@
+MULTI ORIGINAL GRAPH VALIDATION — 9 November 2026
+
+Prospectively fixed follow-up of the frozen 9 November preprint. Earlier seed99
+results are known. No outcome on the three new seeds is consulted in design.
+This is a local protocol lock, not public preregistration or model generalization.
+The frozen preprint and evidence package must not be modified.
+
+SCOPE AND FIXED SAMPLE
+New original graph seeds: 100, 101, 102, chosen as the next three integers after
+historical99; no substitution, screening or enlargement. Use the original Rust
+EIMicrocircuitSpec builder, 100 E +25 I chunks, homogeneous E3 probabilities
+(.15,.25,.25,.20), weights(.6,.8,1.4,.5), delay1, no self edges or parallel edges.
+Keep frozen kernel, scheduler, operation order, 100 synchronized units/chunk,
+300 slots, dt=.1ms, default initial state. Graph size and neuron model unchanged.
+First regenerate seed99 and check graph and all five original-input trajectories
+against the frozen archive as technical bridges; these are not new samples.
+
+Each original independently gets19 minimal legal double-edge swaps, allocation
+EE/EI/IE/II=5/5/5/4. For index i=0..18, RNG Python random.Random(100000*graph_seed
++93001+i). Reuse frozen one_swap: first legal two-row proposal within200000;
+preserve source rows, weight bits and delays; reject duplicate edges, self edges,
+common sources or targets. Same-arm equal-weight swaps preserve per-node per-arm
+in/out degrees, incoming/outgoing weight multisets and strengths. Audit all.
+This is stratified local intervention sampling, not uniform graph-null sampling.
+Do not reject silent or unresponsive graphs/swaps. No accepted swap may depend
+on neural outcomes. Retain duplicates if sampled; identify them in reporting.
+
+INPUTS
+Copy the five exact locked event tables G_B,F_B,F_H,G_T,F_HT and their temporal
+permutation from the prior input-control experiment. No new stimulus. All five
+inputs have their OWN new original reference. G_B/F_H and G_T/F_HT match total
+external drive per slot; G_B/G_T and F_H/F_HT preserve every node's amplitude
+multiset. F_B/F_H tests drive at fixed spatial support. Space and per-target
+amplitude remain coupled; time ordering, duration and final-drive time remain
+coupled. No output matching. Each graph has100 network conditions; total300.
+Run one technical repeat of each original/input (15) plus the seed99 bridge(5),
+not counted as extra scientific cases. No rerun with changed model parameters.
+
+DIRECTIONS AND SCORES
+Extract affected target pairs from the19 swaps, sort and deduplicate, report
+mapping and resulting pair count; never replace duplicates to recover19 pairs.
+For each pair use unchanged pair_pool and16 unique sign-balanced directions:
+fixed incoming support, target/EI/weight-bit groups, drop last source in odd
+size groups, balanced+/- signs and identify opposite directions as one symmetric
+interval. RNG20261108+sorted_pair_index, at most10000 draws. Stop technical stage
+if fewer than16 directions; do not choose a new target pair or generator seed.
+The resulting maximum is3*19*16*5=4560 weight-direction/input conditions.
+
+All graph/event/pool hashes are locked before new network simulation. All scores
+and selections across ALL new graphs are locked before any new radius outcome.
+Use unaltered factor_scores and simple_score: net arriving perturbation, one-step
+filter d=binary32(1-binary32(.1)), reference pre-reset margin with floor2^-20,
+common executed/nonrefractory mask. ScoresF0M0,F1M0,F0M1,F1M1. Lower predicts safer.
+Random direction0, mean activity, source-wise time-shuffled activity, and full
+frozen-branch sensitivity retained; full sensitivity is an algebraic comparator,
+not independent discovery. Mean/shuffle preserve source counts on slots0:298;
+retain source slots298:300. Shifts PCG64 seed20261108+input_index as prior study.
+Selections are frozen on G_B, exact prior tie rule1e-10; evaluate all five inputs.
+Input-conditioned scoring is not blind prediction of another input.
+
+CERTIFICATE AND VALIDATION
+Unchanged fixed-support symmetric weight intervals and arithmetic kernels;
+radii0,2^-16,2^-12,2^-8,2^-6,2^-4,.25; first actual endpoint failure supplies U;
+whole-region certificate supplies L. At most8 refinements, tolerance
+max(2^-20,.05U); uncertified midpoint with passing endpoints is proof_gap.
+Upper cap is right-censoring; proof gap is not proof of unsafe/nonconvex dynamics.
+Zero-radius local replay must match own reference bitwise. Validate each final
+failed witness by independent Python local replay plus exact weight rounding.
+Recheck every reported lower interval and both endpoint replays/containment.
+For pair indices0,floor((N-1)/2),N-1, direction0, all five inputs, perform exact
+Fraction affine checks at the reported lower interval. These are fixed before
+outcomes. Check actual +/-L/0 weight vectors and event-stream distinctions for
+all positive lower intervals: coverage of a nonzero real interval is not assumed
+to mean coverage of multiple distinct binary32 realizations.
+
+COST DIAGNOSTIC
+Same preselected pairs/direction0/all inputs: separate preparation from model+
+whole-interval certification, two endpoint generation+replay, and25 equally spaced
+parameter generation+replays. Five alternating timed rounds, batch10, after two
+warmups; same cached reference/streams, no trace writes or Fraction checks timed.
+No computation-speed guarantee is a scientific gate; sampled points do not supply
+the whole-region guarantee. Cost includes both targets. Report per graph.
+
+REPORTING AND PREDECLARED INTERPRETATION
+1. Visibility: all19 swap outcomes per input, five contrasts' four paired cells,
+   switch counts and zero-error cases. Cross-graph existence replicated for a
+   contrast iff each of the three graphs has>=1 switch. Report0/3..3/3, never
+   pool57 interventions as independent graphs or demand the old9/19 rate.
+2. Score: same resolved pair set, half credit ties, per-target macro then equal
+   input macro per graph; report all inputs, coverage and missing targets.
+   For each comparator(random,filter-only,margin-only,mean,shuffle), joint-minus-
+   comparator is positive if >1e-12. 'Consistent across three graphs' requires
+   positive per-graph equal-input mean on ALL three; otherwise mixed/no support.
+   Undefined inputs prevent that all-input claim, rather than being dropped.
+   No significance test, confidence interval or required0.9 threshold.
+3. Transfer: frozen vs own-input concordance and frozen choices win/loss/same-ID/
+   cap-tie/unresolved. Cross-input opposite-order proportions use only orders
+   resolved in both, and near50% means near loss of ordering, not systematic reversal.
+4. Certification: per graph/input positive lower fraction, distinct-weight/event
+   coverage, median/min/max lower widths, fraction L>=.01, stop/reason counts,
+   capped and unresolved cases. Positive regions on all3 establishes availability
+   in these3 graphs only, not usefulness for arbitrary supports/inputs or correctness
+   by empirical success. Proof/arithmetic validation establishes correctness.
+5. Explanatory diagnostics fixed in advance: pre-reset margin distribution and
+   unfiltered/filtered arriving perturbation magnitudes; score factor differences;
+   same-direction cross-input changes in J and disjoint radius order. Do not fit
+   new predictors or thresholds after results; full sensitivity agreement is
+   algebraic and cannot by itself establish a threshold-margin causal mechanism.
+   Report per graph rather than treating many within-graph directions as replicates.
+6. Report per graph graph statistics, activity and extreme voltage; inherited
+   synchronized deterministic kernel and one graph family remain limitations.
+   All failures, silence, nonfinite states and no-effect cases are preserved.
+
+TECHNICAL STOPS
+Stop before scientific interpretation on source/hash mismatch, invalid graph,
+nonfinite state, reference/bridge disagreement, incorrect witness or containment.
+Preserve failure; any adapter-only repair requires explicit change log and re-lock
+before rerun. Never change scientific settings based on outcomes. No seed, budget,
+input or horizon expansion. Analysis report only; no manuscript modification.

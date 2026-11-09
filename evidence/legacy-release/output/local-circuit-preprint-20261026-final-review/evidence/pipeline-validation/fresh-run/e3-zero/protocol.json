@@ -1,0 +1,40 @@
+{
+  "study": "Post-hoc additive E3 zero-retention endpoint; fixed-seed descriptive comparison",
+  "topology": "EIMicrocircuitSpec::boundary_heavy_hetero",
+  "rng_seed": 200,
+  "weight_spread": 0.5,
+  "p_ee_ei_ie_ii": [
+    0.15,
+    0.25,
+    0.25,
+    0.2
+  ],
+  "w_ee_ei_ie_ii": [
+    0.6,
+    0.8,
+    1.4,
+    0.5
+  ],
+  "delay_slots": 1,
+  "forbid_within_chunk": true,
+  "exc_chunks": 100,
+  "inh_chunks": 25,
+  "units_per_chunk": 100,
+  "units": 12500,
+  "dt_ms": 0.1,
+  "steps": 200,
+  "duration_ms": 20,
+  "drive": "tonic Sustained",
+  "drive_strength": 10,
+  "zero_policy": "RetentionPolicy::new(vec![], 2.0); threshold unused because classes empty",
+  "zero_explicit_path": "Existing run_mixed_with_retention constructs an empty explicit router",
+  "bridge_policy": "StrongInhibitoryLoop, threshold 2.0; identical to old minimum-budget point",
+  "filtered_4ch_params": "RicherProxyParams::default()",
+  "stateful_params": "gain_fast_exc=2.5, gain_fast_inh=0.4; other fields default",
+  "raw_sum": "Stateful with only final exc_drive=raw_exc, inh_drive=raw_inh; state updates retained",
+  "event_ratio": "All recurrent injected events in approximate run / explicit reference",
+  "mismatch_scope": "Per-slot total population spike counts; not per-neuron or voltages",
+  "r_and_fr_delta": "Original compare_dynamics f32; exact f32 bits and float64 trace checks saved",
+  "timings": "Reproduction logistics only; not optimized performance evidence",
+  "tests": "Dedicated additive test only; no PSD assertions or altered historical tests"
+}

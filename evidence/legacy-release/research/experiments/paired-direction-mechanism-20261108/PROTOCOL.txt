@@ -1,0 +1,65 @@
+Paired mechanism audit, fixed before direction scores or perturbed outcomes.
+Original125-chunk graph only; original self-reference for tonic/global_burst/
+focal_burst. Reuse all19 distinct target pairs from earlier swaps, but NO swap
+edges in this experiment. Same300-slot horizon and frozen float/scheduler model.
+No new graph size/seed/input protocol, full-network run, or manuscript revision.
+
+Candidate pool:16 sign directions per target pair, seed20261108+pair index.
+Group original incoming edges by target,E/I,exact weight bits. If group size odd,
+fix the last source-sorted edge at sign0. On the remaining fixed support use equal
+counts of+1/-1, permute within groups. Deduplicate up to global sign (symmetric
+radius). Max10000 draws; retain/report smaller pool if exhausted, never change
+constraints. Direction0 is the random control. These rules match per-group
+perturbed support, signed weight multiset,L1/L2/Linf budgets; quantization preserves
+cross-direction weight multisets at a common parameter (baseline strength may
+have the same quantization discrepancy in all directions). Float weights are
+RN32(w0*(1+t*sign)), t in[-rho,rho]. Maxrho=.25.
+
+Freeze pool BEFORE scoring. All16 directions evaluated for all3 inputs.
+Primary temporal score: signed ideal per-channel arriving input changes for unit
+relative weight perturbation. Combine E-I, filter z[n]=d*z[n-1]+(1-d)*deltaI[n],
+d=f32(1-f32(.1)). At originally executed, refractory-eligible slots, take
+max|z|/max(|v_pre-30|,2^-20), across both targets. This is a deliberately simplified
+single-timescale predictor: it does NOT propagate full conductance/reset dynamics.
+Mean control replaces each source spike train by its time mean, same scoring.
+Shuffle control independently circular-shifts each source by a fixed nonzero
+seeded shift (seed20261108+input index); same score and original margins.
+Shuffling is a SCORE control, not a new closed-loop stimulus.
+Rules choose smallest score on TONIC only; tie lowest direction ID. Random chooses
+ID0. Freeze chosen IDs for both other inputs. No performance-based selection.
+Also compute raw-input magnitude and full frozen-branch sensitivity as explanatory
+baselines. Full sensitivity shares certificate algebra and is an oracle ceiling,
+NOT evidence of a new low-dimensional predictor. All scores use reference only.
+
+Primary outcome: symmetric common-branch robustness radius bracket [L,U].
+L certified for the WHOLE interval[-L,L]. U exists ONLY if an actual point+/-U
+fails common branch fidelity. Certified failure is not an upper bound.
+Ascending initial levels0,2^-16,2^-12,2^-8,2^-6,2^-4,.25, stop at first witnessed
+failure. If bracket exists, at most8 midpoint refinements, stop when
+U-L<=max(2^-20,.05*U). If midpoint uncertified but both endpoints pass, stop and
+report unresolved proof gap, not a counterexample. If no witness by cap, retain
+cap-certified vs unresolved separately. No changes to cap, tolerance or pool.
+Use independent point replay; evaluate BOTH targets separately and choose minimum
+failure slot (tie smallest target), instead of target-major first return.
+Validate every final failed witness with independent Python float32 replay.
+Validate rho0 target states bitwise against original archives.
+
+Analysis fixed before outcome: per-target-pair rank concordance only on radius
+interval pairs with a strictly resolved order; report comparable coverage and
+ties, never rank certificate lower bounds as if exact radii. Average within-pair
+metrics descriptively; do not treat directions/slots/shared pairs as independent
+networks. Cross-input reversal requires a resolved opposite order in both inputs.
+Compare input-conditioned predictions vs frozen tonic predictions on other inputs.
+Selection transfer: paired wins/ties/losses/UNRESOLVED vs random/mean/shuffle,
+plus selected-direction overlap. Retain silent and zero-projected-input cases;
+report active/non-null subgroup separately. Record first-guard target/time match.
+Existing input protocols confound drive,time and spatial support; no causal claim
+about one stimulus attribute. Existing references are reused, not unseen data.
+
+Validation: all fixed support/budget invariants checked; exact Fraction parameter
+rounding for final witnesses; independent Python local point replay at final
+witnesses; representative rational family checks; repeat all nontiming outcomes
+in a fresh process; verify original audit/preprint manifests unchanged.
+Numeric score ties: absolute difference <=1e-10*max(1,|score_a|,|score_b|).
+Selection chooses lowest ID within that tolerance of the minimum. This prevents
+summation roundoff of mathematically cancelling mean activity from selecting IDs.

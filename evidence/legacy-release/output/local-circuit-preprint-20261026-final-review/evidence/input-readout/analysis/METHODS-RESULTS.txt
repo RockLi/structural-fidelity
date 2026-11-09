@@ -1,0 +1,78 @@
+POST-HOC INPUT AND READOUT ANALYSIS — METHODS AND RESULTS
+
+Status. This reuses immutable archived explicit trajectories. No simulations or
+independent graph samples were added. Known switching and composition findings
+were inspected before the plan was fixed; this is not preregistered confirmation.
+One homogeneous original (seed 99), 19 legal single swaps and 19 extensive
+controls are compared under the same three archived protocols, each for 300
+slots of 0.1 ms. The 19 graph identities repeat across protocols.
+
+Input switching. Four categories are applied in order: eligible common-source
+input identical and recorded state identical; input changed but raw-slot spikes
+identical; raw-slot spikes changed but aligned 1-ms counts identical; 1-ms counts
+changed. Eligibility includes source slots 0..297 because source n arrives at
+n+2. This does not claim queues beyond the observation horizon are equal.
+Category counts are 4,17,4,32. Among the same 19 graphs, 2 are spike-identical
+under all three inputs, 7 differ under all three, and 10 switch. Swap 93006 is
+an illustrative post-hoc example: categories 1,2,4 under tonic/global/focal,
+with 1268 mismatching chunk/slot cells in focal input.
+
+Composition. With signed count difference delta[n,k]=candidate-reference,
+Dslot=sum_nk|delta|, Dcount=sum_k|sum_n delta|, Dglobal=|sum_nk delta|.
+The exact identity Dslot=(Dslot-Dcount)+(Dcount-Dglobal)+Dglobal first cancels
+differences within each identified node across time, then across nodes. The
+order matters and is not a unique mechanistic decomposition. The first
+difference is twice the sum over nodes of the minimum of positive and negative
+temporal discrepancies. This does not identify actual spike correspondences,
+short displacements, or a firing-rate/timing causal mechanism. Dcount covers
+only 30 ms, not long-term rates. Dcount/Dslot is undefined for zero Dslot;
+each input has 12 defined swap and 19 defined extensive ratios. Summaries
+are medians of ratios, never ratios of group medians. The median retained
+fractions are 4.3449473%,5.9339888%,12.6640249% for swaps and
+56.7726737%,58.3643123%,52.5452977% for extensive controls (tonic/global/focal).
+
+Binning. Widths are 1,2,10,50,300 slots. For every width b, offsets o=0..b-1
+partition slots by floor((n-o)/b). Both partial edge bins are retained, giving
+the same 30-ms observation window and original total-spike denominator for
+every offset. At width 300 only o=0 is a single full-window bin; shifted
+versions split the window into two partial bins. Identified, E/I-pooled and
+globally pooled L1 values are reported. Only origin-aligned widths are nested.
+The integer inequalities Dcount <= identified-bin L1 <= Dslot and
+global-bin L1 <= E/I-bin L1 <= identified-bin L1 are verified. An independently
+implemented scalar binning fixture checks partial bins and mass preservation.
+All 1089 common-offset/input/width settings have extensive minimum larger than
+swap maximum for identified-count L1. This is not 1089 independent experiments.
+At 1 ms the even stronger cross-offset envelope gaps are 6.0225847,
+13.1419105 and 50.0 percentage points. Pooled E/I and global readouts mostly
+have overlapping group ranges, so separation is not claimed for all readouts.
+
+Smooth robustness. For each identified chunk, count/100 gives its synchronized
+representative spike train. For h_tau(t)=H(t) exp(-t/tau), the original van
+Rossum squared distance is V_tau^2=(1/tau) integral_0^infinity sum_k
+[(h_tau*delta_k)(t)]^2 dt. The normalized score reported is R_tau=2V_tau^2/Nref,
+where Nref is original representative-spike count. This is dimensionless,
+unbounded, and is not an L1 percentage. Tau=0.1,0.2,1,5,30 ms. The integral
+includes the full analytic exponential tail of spikes inside the recorded
+window; it assumes no subsequent recorded events and makes no claim about
+unobserved future activity. An independent piecewise integral equals the
+exponential-kernel quadratic recurrence. Single insertion, shifted spike,
+different channels, zero difference and last-slot tail tests pass. Extensive
+minimum exceeds swap maximum in all 15 input/tau settings; zero distance
+occurs exactly in the 21 spike-identical swap comparisons for every finite tau.
+The score need not decrease monotonically with tau: net count differences
+and correlations also contribute. No new spike metric is proposed.
+
+Primary source consulted for the smoothing definition and full-tail convention:
+M. C. W. van Rossum (2001), A Novel Spike Distance, Neural Computation 13(4),
+751–763, doi:10.1162/089976601300014321, equations (2.2)–(2.8).
+https://www.pure.ed.ac.uk/ws/portalfiles/portal/7772755/089976601300014321.pdf
+
+Limits. The three input protocols differ in total drive, so switching is an
+input-protocol result, not an isolated spatial-locality effect. Structural
+budgets differ by about 1100-fold, so separation does not establish a preferred
+geometry or error per changed edge. One synchronized, uncalibrated numerical
+kernel and one original do not support graph-population inference, generic
+robustness, a universal causal mechanism, or long-time equivalence. All
+curves and offsets reuse the same data. No p-values or population confidence
+intervals are calculated. The same-source input diagnostic is not a predictor
+of nonlinear closed-loop error once source trajectories diverge.

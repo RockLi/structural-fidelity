@@ -1,0 +1,13 @@
+{
+  "scope": "Post-hoc feasibility audit of already archived cases, not independent validation or new network experiments",
+  "source_release": "output/local-circuit-preprint-20261026-final-review",
+  "target_cases": "All 17 input_changed_spikes_equal rows, without exclusions",
+  "negative_and_zero_controls": "All other 40 archived single-swap/input rows",
+  "certificate": "Outward rational state intervals, aggregate-addition float32 roundoff bounds, threshold and scheduling guards; stop on first inconclusive guard",
+  "rounding": "IEEE binary32 round-to-nearest ties-to-even, original operation ordering, no reassociation, no NaN/overflow; finite-state model only",
+  "inputs_allowed": "Original archived state/spikes; original and candidate graphs; frozen source; external input protocol. Candidate state files are opened only after certification for audit",
+  "success": "Any fully certified nonzero case is feasibility coverage, not proof of novel theory, transfer or speedup",
+  "failure": "Inconclusive certificate is not a prediction of spike divergence",
+  "cost": "Report setup separately; incoming-event count, touched chunks, checked slots and observed local audit times. No comparison of Python times with archived instrumented Rust as speedup",
+  "constraints": "No simulator launched, no new graphs/inputs, no changes to paper or archived evidence; no tuning of bounds after results"
+}

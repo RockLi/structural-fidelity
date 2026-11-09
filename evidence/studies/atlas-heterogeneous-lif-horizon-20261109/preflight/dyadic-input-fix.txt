@@ -1,0 +1,1 @@
+Before any scientific trajectory: decimal SI values12mV and60mV cannot express a mathematically exact5:1 ratio in binary64. Use15.625mV and78.125mV (exact dyadic SI values) to preserve per-slot total drive exactly. No outcomes used; no stimulation pilot or tuning. Prior protocol and hash retained; revised protocol re-locked.

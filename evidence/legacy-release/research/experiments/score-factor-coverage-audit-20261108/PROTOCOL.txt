@@ -1,0 +1,65 @@
+POST HOC READ-ONLY SCORE AND COVERAGE AUDIT — 8 November 2026
+
+Status: analysis planned after the 912-condition outcomes and reviewer criticisms
+were known. This is not preregistration, independent validation, or new simulation.
+No network, point replay, certificate, bracket refinement, or new input is run.
+Reference pre-reset values are reconstructed and checked against archived states.
+Original sources, radii, trajectories and manuscript are read-only.
+
+PRIMARY FACTORIAL
+For each of the original 19 target pairs, 16 directions and 3 input references:
+compute the same signed E-minus-I arriving projection x[k,n]. Evaluate all four
+scores on the SAME originally executed, refractory-eligible target/slot mask:
+F0M0 = max |x|; F1M0 = max |z|; F0M1 = max |x| / margin;
+F1M1 = max |z| / margin, where z[n]=d*z[n-1]+(1-d)*x[n], z[-1]=0,
+d=binary32(1-binary32(.1)), margin=max(|v_ref_pre-30|,2^-20).
+Only source amplitudes and reference fields are used, never perturbed trajectories.
+F1M1 must reproduce the archived temporal scores. The original raw control used
+all slots; retain it separately, do not conflate it with mask-matched F0M0.
+Secondary: apply the same factorial to the original mean and independently
+circular-shifted source controls (same original seeds and 300-slot definition).
+Their F1M1 scores must reproduce archived mean/shuffle. They already use margin.
+The delivered-window correction remains a prior post hoc sensitivity result;
+we do not redefine those controls in this audit.
+
+ORDER AND COVERAGE
+Lower score predicts larger safe radius. Actual order is known only if L_a>U_b
+or L_b>U_a. U absent at cap is unbounded, never replaced by .25. Use original
+score tie rule 1e-10*max(1,|a|,|b|), half credit for prediction ties.
+Report per-target and macro concordance, micro concordance, predicted ties,
+resolved coverage and all excluded target identities. All methods use the same
+resolved set. Report paired per-target improvements for both factors and the
+factorial interaction; no p-values or independent-pair confidence intervals.
+For unresolved pairs, give deliberately loose score-completion ranges [0,1]
+per pair (half credit for a predicted tie), not confidence intervals or estimates.
+A capped pair is not a true-radius tie. Separate both-capped, proof-gap-overlap,
+finite-overlap and cap-overlap. Report relative bracket widths and stop types.
+
+INTERVAL SEPARATION
+For resolved order a safer than b, g=L_a/U_b is a conservative LOWER BOUND on
+the radius ratio, not a measured true ratio. Fix bins now:
+(1,1.10], (1.10,1.25], (1.25,1.50], (1.50,2], (2,infinity).
+Report each bin's comparison and target counts, macro/micro concordance for
+all methods; also separate two finite brackets from one capped bracket.
+No adaptive bins, no midpoint-imputed truth. Retain raw per-pair outputs.
+
+SECONDARY CROSS-INPUT CHECK
+For each score, evaluate frozen-tonic ranks and rankings using each input's own
+reference on identical target-input resolved sets. This is descriptive reference-
+conditioned comparison, not input-blind prediction or held-out validation.
+
+DOSE AVAILABILITY ONLY
+Inventory all candidate identities, graph aliases, graph hashes, selector
+memberships and completed training trajectories at replaced-adjacency budgets
+28,56,282. Verify common original, input and state layout; reconstruct each
+stored within-arm prefix from the recorded accepted swaps and compare graph
+bytes/arrays, without simulating it. Report intersections by candidate seed,
+including random-policy-only chains and policy-selected overlaps. Distinguish
+changed adjacency count from accepted swap count. Verify which old minimal-swap
+input matches the training reference; do not treat different chains as paired.
+Do not compute a dose-response claim or run missing candidates in this audit.
+
+DECISION SCOPE
+The results may change which scoring factor deserves scientific emphasis. They
+cannot isolate a causal dynamical mechanism, establish other-model validity,
+show cost savings, or turn selected-graph availability into unbiased dose data.

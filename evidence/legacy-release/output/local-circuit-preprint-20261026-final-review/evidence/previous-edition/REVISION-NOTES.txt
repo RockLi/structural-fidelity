@@ -1,0 +1,75 @@
+Portable reproduction pipeline revision of 22 October 2026
+
+1. Added an explicit fresh-run log extractor and a portable end-to-end driver.
+   Fresh original and diagnostic logs generate the rounded, exact and primary
+   CSV tables used by plotting. Input paths and hashes are recorded; missing
+   requested inputs never fall back to archived tables.
+2. Added explicit data, figure and output paths to both plotting scripts and the
+   bilingual manuscript builder. Archived results remain the comparison baseline.
+3. Clarified 500 chunks comprising 50,000 allocated units in the abstract and E1
+   results. Defined deterministic as fixed model/input without process noise,
+   while acknowledging unspecified HashMap order and floating-point behavior.
+4. Clarified that B1-B8 construct candidate event lists with an independent helper
+   and test Scheduler/Chunk delivery conditions, not the production online
+   aggregation path or recurrent feedback. Their exactly representable amplitudes
+   do not constitute a general floating-point rounding stress test.
+5. The validation record distinguishes a fresh extracted-package execution from
+   preserved historical evidence. Scientific conclusions, references, Proposition 1
+   and the frozen Rust implementation are unchanged. No public upload was performed.
+
+Execution-condition revision of 22 October 2026
+
+1. Restricted Proposition 1 delivery effects to designated-input accumulation and
+   activation bookkeeping, before a common neuronal update. Explicitly described
+   positive recurrent weights and the zero-weight wake-up limitation of raw sums.
+2. Clarified the prototype status of filtered/history rules, their unequal gain
+   mappings, and the dependence of message ratio Q on the activity trajectory.
+3. Added B1-B8 controlled event-delivery fixtures using unchanged frozen kernel and
+   scheduler code. Five correct controls preserve all observed state bits and
+   activation records. Three deliberate violations produce internal-state
+   differences while retaining their reference per-unit spike sequences.
+4. Added Methods 3.3, Results 4.5, Table 4 and Appendix D. These open-loop fixtures
+   do not establish full neural-state equality for the historical E1-E5 runs.
+5. Added Figure 4 from archived E3 zero-retention data, showing exact raw-sum count
+   agreement and 146 history-modulated count differences without smoothing.
+6. Rebuilt both DOCX files and updated the reproduction archive, hashes, reference
+   checks and visual validation. Existing experimental evidence and figures remain
+   unchanged; no public release or upload was performed.
+
+Reference and positioning revision of 22 October 2026
+
+1. Added Lytton (1996), Brette et al. (2007), Albers et al. (2022) and van Albada
+   et al. (2015). Renumbered all ten references in order of first citation; both
+   languages use one bibliography and matching citation groups.
+2. Positioned the study as an application of established additive aggregation to
+   the model's discrete routing and activation rules. Proposition 1 retains its
+   mathematical conditions and proof; its label and surrounding discussion now
+   state its scope explicitly. Discrete execution equivalence is distinguished
+   from exact integration of a continuous-time model.
+3. Distinguished source-to-process spike compression from the implemented input
+   sums, and population-averaged within-network pairwise correlations from the
+   cross-run population-count correlation r. These citations do not add evidence
+   for unmeasured state trajectories, graph compression or runtime acceleration.
+4. Rebuilt both DOCX files, checked citation numbering and page layout, and
+   retained the archived experiments and scientific figures without changes.
+5. Corrected the archive exclusion rule for the metadata file listed in the
+   frozen source manifest, allowing all 55 source files to verify after extraction.
+
+Earlier E3 zero-retention revision of 22 October 2026
+
+1. Added measured E3 0% retention points for filtered four-channel, history
+   modulation and raw sums. Repeated the original 2.0% setting as a bridge for
+   each method. Updated Figure 3, methods, results, captions and parameter table.
+2. Clarified that message coalescing retains unit states and projection adjacency;
+   only spiking sources trigger traversal of their replaced outgoing edges.
+   Message counts are not runtime or model-state compression measurements.
+3. Removed any implication that heterogeneous delays or within-chunk initial-state
+   or parameter variation alone makes lossy proxies necessary. History dynamics
+   require evaluation under specified computational/storage budgets.
+4. Clarified that the filtered/history comparison changes several factors and
+   does not identify or rank their individual effects.
+5. Replaced Unicode subscript k in Equation 2 with nested editable Word math,
+   made the helper accept sequences, explained suppressed indices in Equation 4,
+   and separated weighted-spike factors in the inline formula.
+6. Preserved historical source and records. New experiment artifacts are in
+   evidence/e3-zero-retention/ and have their own reproduction script and hashes.

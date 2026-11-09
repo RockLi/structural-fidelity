@@ -1,0 +1,1 @@
+Before any scientific run: exclude append-only command stdout logs from design lock, preserving the original lock. Code/model/input/protocol files remain locked; logs will be included in the final manifest. No scientific rule or outcome change.

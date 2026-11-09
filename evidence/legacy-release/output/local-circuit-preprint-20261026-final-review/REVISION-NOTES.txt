@@ -1,0 +1,43 @@
+26 October 2026 — Final review revision (no additional simulations)
+
+The two main findings, title, abstract, conclusion, mathematical statements,
+proofs, and all 19 references remain unchanged. This is a clarification and
+presentation revision of the budget-boundary edition, not a new experiment.
+
+Section 3.9 now explicitly distinguishes the score's source slots 0–297 from
+Corollary 1, which also requires the input-map condition for slots 298 and 299
+and every initial-state, pending-input and activation hypothesis. Even an exact
+zero score alone would not certify the corollary. No candidate in the archived
+study has a zero score. The Discussion identifies the selection follow-up as a
+ranking test that does not directly explain the temporal error-composition
+finding. Both languages express the same limits.
+
+New reader Table 8 reports coactivity minus each of random, mean-activity and
+shuffled selection at both small budgets: paired mean/median differences,
+wins/ties/losses, same-graph counts, each comparator condition, each budget
+condition and the joint stopping decision. Differences are shown in percentage
+points; sign tolerance applies before this display conversion. All calculations
+and decisions use unrounded values and the originally frozen rule. Pairing and
+same-graph memberships are retained; no independence or significance is implied.
+
+At 0.984%, random passes and the other two comparator safeguards fail. At
+1.968%, all three pass. Both budgets are required, so the joint decision is
+STOP, with zero new migration conditions. The 1.968% shuffled comparison has
+one win and nine ties; it does not establish a coactivity-specific benefit.
+Table 7 preserves every selector mean and reports its all-zero zero-count
+columns in a complete 0/10 footnote, including the earlier 9.912% condition.
+Figure 7 now points to Table 8 for all controls and stopping criteria.
+
+The plotting script recomputes all six paired contrasts and the stop decision
+from archived per-policy data, checks the stored gate, and exports a new CSV.
+An independent implementation checks raw pairs, protocol, gate, run ledger,
+new CSV/JSON and both DOCX tables. The archived-trajectory reproduction path
+regenerates CSVs, figures and bilingual DOCX. No simulator is invoked in this
+revision. Previous full simulation-to-document validation is retained separately
+in validation/previous-budget-release; it is not a new simulation validation.
+
+All 6,440 files beneath evidence/ are retained byte-for-byte, including prior
+manifests. Existing budget plots and the two previous presentation CSVs are
+unchanged. The release includes document, citation, numerical, rendering and
+archive-integrity checks. Public deposition remains a separate action; no
+public archive identifier is fabricated.

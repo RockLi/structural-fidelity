@@ -1,0 +1,192 @@
+{
+  "scope": "Open-loop event-delivery fixtures using actual frozen Scheduler/Chunk; not E1/E3 validation, generalization, or a performance benchmark",
+  "steps": 12,
+  "dt_ms": 0.1,
+  "duration_ms": 1.2,
+  "chunks": 2,
+  "units_per_chunk": 4,
+  "initial_status": "Explicitly set to Dormant before Scheduler::add_chunk; this overrides Chunk::new Active default",
+  "initial_voltage": -65.0,
+  "B2_initial_voltages_each_chunk": [
+    -65.0,
+    -32.0,
+    0.0,
+    29.0
+  ],
+  "other_initial_unit_states_and_local_fields": 0,
+  "field_decay_tau_ms": 10.0,
+  "enqueue_slot": 0,
+  "slot_indexing": "Zero based; CSV slot n records state after Scheduler::step at input current_slot n",
+  "event_tuple_order": [
+    "target_chunk",
+    "absolute_arrival_slot",
+    "signed_strength"
+  ],
+  "reference_events": {
+    "B1_B2": [
+      [
+        0,
+        2,
+        256
+      ],
+      [
+        0,
+        2,
+        512
+      ],
+      [
+        1,
+        2,
+        128
+      ],
+      [
+        1,
+        2,
+        256
+      ]
+    ],
+    "B3_B4": [
+      [
+        0,
+        2,
+        0
+      ]
+    ],
+    "B5_B6": [
+      [
+        0,
+        2,
+        256
+      ],
+      [
+        0,
+        2,
+        512
+      ],
+      [
+        0,
+        2,
+        -256
+      ],
+      [
+        0,
+        2,
+        -512
+      ]
+    ],
+    "B7_B8": [
+      [
+        0,
+        2,
+        256
+      ],
+      [
+        0,
+        2,
+        512
+      ],
+      [
+        0,
+        4,
+        -128
+      ],
+      [
+        0,
+        4,
+        -128
+      ]
+    ]
+  },
+  "candidate_events": {
+    "B1_B2": [
+      [
+        0,
+        2,
+        768
+      ],
+      [
+        1,
+        2,
+        384
+      ]
+    ],
+    "B3": [],
+    "B4": [
+      [
+        0,
+        2,
+        0
+      ]
+    ],
+    "B5": [
+      [
+        0,
+        2,
+        -768
+      ],
+      [
+        0,
+        2,
+        768
+      ]
+    ],
+    "B6": [
+      [
+        0,
+        2,
+        0
+      ]
+    ],
+    "B7": [
+      [
+        0,
+        2,
+        768
+      ],
+      [
+        0,
+        4,
+        -256
+      ]
+    ],
+    "B8": [
+      [
+        0,
+        2,
+        768
+      ],
+      [
+        0,
+        2,
+        -256
+      ],
+      [
+        0,
+        4,
+        0
+      ]
+    ]
+  },
+  "single_condition_violations": {
+    "B3": "Drops event existence for a zero-amplitude wake-up",
+    "B6": "Changes polarity grouping; retains the original arrival-slot wake marker. Subsequent activation differences are consequences of changed conductance states.",
+    "B8": "Changes arrival time of inhibitory magnitude; retains destination arrival support {2,4} and channel magnitudes, using a zero wake marker at slot 4"
+  },
+  "event_count_scope": "All preloaded fixture messages, including wake markers; no recurrent router or external-drive classification",
+  "comparison": "Every recorded f32 state compared by to_bits; max errors decoded from f32 bits. This is measured equality in these fixtures, not a floating-point theorem",
+  "observed_state_fields": [
+    "v",
+    "recovery",
+    "ge",
+    "gi",
+    "gl",
+    "fe",
+    "fi",
+    "spike_flag",
+    "refractory_until",
+    "post_step_status",
+    "stepped_this_slot",
+    "earliest_pending_arrival"
+  ],
+  "not_compared_as_equal": "Queue event multiplicity, processed-message counters, wall-clock timings, and queue payload identity"
+}

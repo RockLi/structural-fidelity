@@ -1,0 +1,38 @@
+Implementation-cost audit, 2026-11-08. No new network conditions.
+
+Keep the earlier 57 cases, exact rational enclosure formulas, thresholds,
+branch predicates, checking order, horizon and initial state unchanged.
+Use a binary64 interval filter to determine the SAME outward binary32 endpoints
+as the rational checker. If either endpoint cannot be uniquely determined,
+fall back to the original exact-rational operation. Do not widen, narrow or
+replace the mathematical certificate. Compare EVERY saved state-interval
+endpoint and EVERY nontiming outcome/counter to the rational implementation.
+
+Compile both interval filtering and binary32 local point replay in the SAME
+native translation unit with identical compiler flags (no fast math or FMA
+contraction). Both receive the same ordered inputs, reference fields, execution
+schedule and selected two targets; neither reads archived candidate outcomes.
+Replay tests the actual threshold/scheduling decisions, with early stop on a
+mismatch. It is a local reference-driven consistency check, not a full network
+simulator. Do not benchmark Python intervals against native replay as the
+principal comparison; use native-filter certificate versus native replay.
+
+Record reference setup, graph/index/I/O, ordered-input preparation, and kernels
+separately; report totals including shared candidate preparation. Alternate
+kernel measurement order, warm up symmetrically, retain all per-case timings.
+Report all 57 cases and the 16 originally certified nonzero cases separately;
+the latter have matched full-horizon work. Record fallback counts. Old rational
+implementation is an exact-result oracle and an implementation-speed comparator.
+
+No accuracy/threshold tuning, no independent biological/generalization claim,
+no graph compression or full-simulator acceleration claim. A lack of advantage
+over replay is a valid outcome. Preserve previous audit and preprint hashes.
+
+Implementation details fixed before recorded runs: cache reference spike slots;
+compute each edge's rounded weight-times-100 once; check prepared arrays bitwise
+against the previous preparation on all 57 cases. Outward binary64 adjacent
+values use exact IEEE bit stepping, separately checked against nextafter.
+Time batched calls inside C (11 alternating rounds, 100 repetitions per round)
+to amortize the Python call boundary for BOTH kernels. No traces in either
+timed kernel. Prior exact Python oracle still materializes its validation trace;
+its timing is an implementation comparison, not the fair native baseline.

@@ -1,0 +1,402 @@
+{
+  "status": "pass",
+  "analysis_only": true,
+  "posthoc": [
+    "horizon failure upper versus short certified lower",
+    "cross-input direction order comparison in LIF"
+  ],
+  "independent_original_graphs": 10,
+  "LIF_graphs_are_subset": [
+    100,
+    201,
+    301
+  ],
+  "legacy_visibility": {
+    "G_B/F_H": {
+      "min": 4,
+      "max": 13,
+      "median": 9.0
+    },
+    "G_T/F_HT": {
+      "min": 6,
+      "max": 11,
+      "median": 8.0
+    },
+    "G_B/G_T": {
+      "min": 2,
+      "max": 8,
+      "median": 4.0
+    },
+    "F_H/F_HT": {
+      "min": 0,
+      "max": 4,
+      "median": 1.5
+    },
+    "F_B/F_H": {
+      "min": 2,
+      "max": 7,
+      "median": 4.0
+    }
+  },
+  "legacy_frozen_range": [
+    0.47131423496985325,
+    0.5551381706703483
+  ],
+  "legacy_own_range": [
+    0.7896915928954537,
+    0.938567884901515
+  ],
+  "shrink": [
+    {
+      "mode": "hom",
+      "short": 300,
+      "long": 1000,
+      "strict": 591,
+      "total": 720
+    },
+    {
+      "mode": "hom",
+      "short": 1000,
+      "long": 3000,
+      "strict": 508,
+      "total": 720
+    },
+    {
+      "mode": "hom",
+      "short": 300,
+      "long": 3000,
+      "strict": 630,
+      "total": 720
+    },
+    {
+      "mode": "hetero",
+      "short": 300,
+      "long": 1000,
+      "strict": 653,
+      "total": 720
+    },
+    {
+      "mode": "hetero",
+      "short": 1000,
+      "long": 3000,
+      "strict": 518,
+      "total": 720
+    },
+    {
+      "mode": "hetero",
+      "short": 300,
+      "long": 3000,
+      "strict": 710,
+      "total": 720
+    }
+  ],
+  "input_orders": [
+    {
+      "mode": "hom",
+      "steps": 300,
+      "common": 0,
+      "changed": 0,
+      "possible": 1080
+    },
+    {
+      "mode": "hom",
+      "steps": 1000,
+      "common": 852,
+      "changed": 400,
+      "possible": 1080
+    },
+    {
+      "mode": "hom",
+      "steps": 3000,
+      "common": 857,
+      "changed": 434,
+      "possible": 1080
+    },
+    {
+      "mode": "hetero",
+      "steps": 300,
+      "common": 602,
+      "changed": 225,
+      "possible": 1080
+    },
+    {
+      "mode": "hetero",
+      "steps": 1000,
+      "common": 919,
+      "changed": 405,
+      "possible": 1080
+    },
+    {
+      "mode": "hetero",
+      "steps": 3000,
+      "common": 829,
+      "changed": 394,
+      "possible": 1080
+    }
+  ],
+  "table1": [
+    [
+      99,
+      "Independent",
+      9,
+      6,
+      4,
+      1,
+      3
+    ],
+    [
+      100,
+      "Independent",
+      4,
+      8,
+      3,
+      3,
+      4
+    ],
+    [
+      101,
+      "Independent",
+      10,
+      9,
+      5,
+      2,
+      4
+    ],
+    [
+      102,
+      "Independent",
+      7,
+      6,
+      3,
+      4,
+      6
+    ],
+    [
+      201,
+      "Module",
+      8,
+      8,
+      4,
+      4,
+      2
+    ],
+    [
+      202,
+      "Module",
+      13,
+      6,
+      8,
+      1,
+      5
+    ],
+    [
+      203,
+      "Module",
+      8,
+      10,
+      7,
+      1,
+      2
+    ],
+    [
+      301,
+      "Ring",
+      11,
+      11,
+      2,
+      2,
+      6
+    ],
+    [
+      302,
+      "Ring",
+      9,
+      8,
+      4,
+      1,
+      7
+    ],
+    [
+      303,
+      "Ring",
+      11,
+      9,
+      4,
+      0,
+      4
+    ]
+  ],
+  "table2": [
+    [
+      100,
+      30,
+      7,
+      "0.994",
+      "0.734",
+      "41.7",
+      2
+    ],
+    [
+      100,
+      100,
+      0,
+      "0.850",
+      "0.495",
+      "85.6",
+      3
+    ],
+    [
+      100,
+      300,
+      0,
+      "0.775",
+      "0.526",
+      "71.9",
+      3
+    ],
+    [
+      201,
+      30,
+      8,
+      "1.000",
+      "0.584",
+      "76.7",
+      3
+    ],
+    [
+      201,
+      100,
+      1,
+      "0.914",
+      "0.531",
+      "97.2",
+      3
+    ],
+    [
+      201,
+      300,
+      0,
+      "0.826",
+      "0.585",
+      "95.6",
+      3
+    ],
+    [
+      301,
+      30,
+      9,
+      "0.995",
+      "0.567",
+      "60.3",
+      2
+    ],
+    [
+      301,
+      100,
+      0,
+      "0.813",
+      "0.570",
+      "95.6",
+      3
+    ],
+    [
+      301,
+      300,
+      0,
+      "0.753",
+      "0.545",
+      "75.3",
+      3
+    ]
+  ],
+  "table3": [
+    [
+      "hom",
+      30,
+      720,
+      720,
+      "25.00000",
+      518,
+      1
+    ],
+    [
+      "hom",
+      100,
+      720,
+      720,
+      "1.85547",
+      63,
+      2
+    ],
+    [
+      "hom",
+      300,
+      720,
+      720,
+      "0.34485",
+      57,
+      3
+    ],
+    [
+      "hetero",
+      30,
+      720,
+      720,
+      "4.19922",
+      194,
+      0
+    ],
+    [
+      "hetero",
+      100,
+      720,
+      720,
+      "0.35629",
+      0,
+      1
+    ],
+    [
+      "hetero",
+      300,
+      708,
+      720,
+      "0.09880",
+      0,
+      4
+    ]
+  ],
+  "source_csvs": [
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/activity.csv",
+      "sha256": "1d9962523f9465783f9e3712249f1955f8074d0be7b3aa3d35fc951e20f9b23a"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/visibility-switches.csv",
+      "sha256": "d0cb0e7abc931e208e117f99fdb8ce25809cd6cbbfe400a05d398873d454ccc7"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/score-macro.csv",
+      "sha256": "820ca387a88a2c3f000d230cd0da50522319541407011c10ed8e383ce3b882a2"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/ranking-coverage.csv",
+      "sha256": "3812ca130521cb7f65fd5aef63434354ae620c65fa2abecb108e39e52e211c81"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/region-summary.csv",
+      "sha256": "e7fbe5ccd3c9111a9b67c858372be30484bb8cd08207f0df78bc355d5cf9d647"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/GB-selection-transfer.csv",
+      "sha256": "c56db234ccf9750e75c1d40066dc50f3f58f734063eb5d1086f295df3aae401f"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/resolved-pair-scores.csv",
+      "sha256": "a2336f6bc54a496dcbf806aa7f6bcf3774abfb87ca624291591ca8db2840ba92"
+    },
+    {
+      "path": "evidence/studies/atlas-heterogeneous-lif-horizon-20261109/analysis/posthoc-margin-floor-audit.csv",
+      "sha256": "24468f8f67183f0fb4eb7b450b9ae7dd98d3f5f3ae0c006ad4472ac11844d2bb"
+    }
+  ]
+}

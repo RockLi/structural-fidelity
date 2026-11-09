@@ -1,0 +1,91 @@
+Sensitivity driver: interface and execution contract
+===================================================
+
+The driver is additive instrumentation over the frozen Rust library copied from
+output/local-circuit-preprint-20261023-conditional/evidence/rewiring/source.
+It does not change the neuronal kernel, event scheduler, or EventRouter.
+Use rustup run 1.98.1 rustc, edition 2024 and opt-level 3, with that library.
+
+Commands
+--------
+experiment simulate GRAPH.csv PROBE PREFIX [INITIAL_V.csv]
+experiment check-initialization [INITIAL_V.csv]
+
+PROBE is tonic, global_burst, or focal_burst. All three exactly match the
+homogeneous 300-slot explicit probes in the prior rewiring experiment:
+125 chunks, 100 units/chunk, dt 0.1, canonical source-sorted EventRouter.
+The scientific runner must freeze its protocol before invoking simulate.
+check-initialization only constructs and compares objects: it performs zero
+simulation steps and injects zero events.
+
+GRAPH.csv has the exact header arm,source,target,weight_bits,delay. The five
+fields are unsigned decimal integers. It retains row order within projection
+arms, requires positive finite weights, delay 1, correct E/I arms, no self-loop,
+and no duplicate directed pair. Population IDs are E 0..99 and I 100..124.
+
+INITIAL_V.csv, when supplied, has the exact header chunk,voltage_bits followed
+by exactly one row for each chunk 0..124 (row order does not matter). Values
+are unsigned decimal IEEE-754 f32 bits and must be finite. All 100 units in a
+chunk receive the same supplied V. Without the file, every unit starts at -65.
+
+Initialization and dormant semantics
+------------------------------------
+The driver specializes the frozen build_harness_scheduler constructor to its
+fixed 10,000 E / 2,500 I / 100-unit setting. Coordinates, field_decay_tau 10,
+initial state, and Dormant status match that constructor. The only intervention
+is writing V after Chunk::new and before Scheduler::add_chunk. It does not
+inject a wake-up, change status, advance time, or prepare inputs. The frozen
+library has no separate prepare call. Other initial fields are compared by bits
+with a separately constructed historical harness object before every run.
+
+Thus a chunk initially remains Dormant even when its V differs from -65. It
+first executes according to the original external/recurrent-event scheduling.
+Its initial V persists until that first actual execution. This is an initial
+condition sensitivity intervention, not a perturbation delivered at slot zero
+or a simultaneous forced execution of all chunks.
+
+First-execution diagnostics use the existing public active_step_count metric.
+Before each Scheduler::step the driver observes V bits after input injection
+(input injection only queues events); afterward a count transition 0 to 1
+identifies that chunk's first execution slot. The recorded pre-update bits are
+asserted equal to supplied initial bits. No change to scheduler or kernel is
+needed. Chunks that never execute have null diagnostics.
+
+Outputs
+-------
+PREFIX.bin: 300 x 125 x 10 unsigned 32-bit little-endian entries, slot-major,
+then ascending chunk ID, with exactly the historical ten fields:
+  spikes, voltage_bits, g_exc_bits, g_inh_bits, g_long_range_bits,
+  recovery_bits, local_exc_field_bits, local_inh_field_bits,
+  refractory_until, status (Dormant 0, Active 1, PendingWakeUp 2).
+Observations occur after recurrent routing, matching the historical driver.
+
+PREFIX.csv: exactly the historical header and columns:
+  step,spikes,recurrent_messages,active_source_edge_visits,active_chunks
+
+PREFIX.json: dimensions and instrumented loop time (not a performance
+benchmark), plus all 125 initial_voltage_bits; initialization_before_add_chunk;
+initial slot and empty queues; other_initial_fields_match_frozen_harness;
+within_chunk_equality_initial_and_all_slots and its 37,625 chunk-check count;
+and 125-element first_step_slot / first_pre_update_voltage_bits arrays.
+Six f32 state arrays and the refractory array are checked for exact within-chunk
+equality initially and after every slot. Finite values are also required.
+The output prefix must be unused; existing .bin, .csv, or .json are rejected.
+
+Baseline validation requirement
+-------------------------------
+The unperturbed supplied graph plus omitted INITIAL_V.csv must be compared
+against old original__PROBE__explicit.bin and .csv for all three probes after
+protocol freezing. Binary state and CSV comparison are exact, not tolerance
+checks. New JSON includes extra metadata and variable instrumented runtime,
+so it is not expected to equal the old JSON byte-for-byte.
+
+Implementation-only checks completed before protocol freeze
+-----------------------------------------------------------
+The driver compiled with rustc 1.98.1, edition 2024, opt-level 3 against the
+existing frozen library. check-initialization passed for default V and for a
+technical 125-row CSV alternating the adjacent f32 bit patterns around -65.
+Both commands reported simulation_steps=0 and events_injected=0. No simulate
+command or scientific experiment was run during driver preparation. The
+scientific runner should repeat its own compiler and initialization checks
+from the copied source and record the commands in its frozen-run evidence.

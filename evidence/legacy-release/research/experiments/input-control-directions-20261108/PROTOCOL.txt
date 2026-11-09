@@ -1,0 +1,97 @@
+SMALL INPUT CONTROL WITH PAIRED SAFE DIRECTIONS — 8 November 2026
+
+Protocol fixed before any new-input trajectory, score or perturbation outcome.
+Prior results and graph are already known. This is a locked conditional follow-up,
+not public preregistration, independent graph replication or model generalization.
+No new graph seed, network size, neuronal kernel or manuscript revision.
+
+DESIGN
+Reuse the original125-chunk homogeneous seed99 graph, the SAME19 minimal legal
+swap graphs, original initial states, frozen deterministic scheduler/kernel,
+binary32 order, U=100 and dt=.1ms. Horizon300slots/30ms. Swap identities and the
+previous 19target-pair x16direction pool are immutable. All cases reported.
+
+Inputs (external E-channel injections, before each scheduler step):
+G_B: global100 excitatory chunks, amplitude150, slots0..79 (archived global).
+F_B: focal20 chunks 0,5,...95, amplitude150, slots0..79 (archived focal).
+F_H: same focal20, amplitude750, slots0..79 (NEW, total matched to G_B).
+G_T: same global100/amplitude150, common time permutation below (NEW).
+F_HT: same focal20/amplitude750, SAME common time permutation (NEW).
+For T, use numpy Generator(PCG64), seed20261108, permute slots0..159 and
+select the first80 indices, sort them. All target nodes receive the same schedule.
+Slots160..299 remain unstimulated. Within each G_B->G_T and F_H->F_HT pair,
+each node's300-slot input-amplitude multiset (including zeros), total amplitude,
+event count and spatial support are exactly preserved. Temporal order, run length
+and stimulus end time can change; this is not an isolated phase-shift experiment.
+G_B,F_H,G_T,F_HT each inject total1,200,000 numerical amplitude units. G/F spatial
+contrasts also change local amplitude and number of targeted nodes; do not call
+this a pure spatial-range effect. F_B->F_H is a same-support drive-level contrast.
+No stimulation rescaling based on observed output, silence, saturation or ranking.
+
+NETWORK RUNS
+Five inputs x(original+19same swaps)=100 conditions.40 are technical bridges to
+existing G_B/F_B archives;60 are new graph/input conditions. Every input has its
+OWN original reference. Bridge all recorded bits and integer output CSVs.
+Repeat the100conditions in a fresh output directory as technical reproducibility,
+not extra samples. Do not rerun a failed biological result with altered settings.
+
+PRIMARY STRUCTURAL COMPARISONS
+Per original-vs-swap/input: Dslot, Dcount, Dglobal, R=Dcount/Dslot, zero vs nonzero
+spike error, earliest spike mismatch, bitwise equality. R undefined at Dslot0.
+For G_B/F_H, G_T/F_HT (equal external total), G_B/G_T, F_H/F_HT (per-node input
+statistics preserved), and F_B/F_H (drive at fixed support), report paired
+same/same, different/different, and both visibility-switch directions.
+The spatial/temporal 2x2 uses only matched-total G_B,F_H,G_T,F_HT. Report each
+swap's joint pattern. A missing switch is not evidence that earlier effects were
+caused only by total drive. No p-values on nineteen dependent interventions.
+
+DIRECTION SCORING / OUTCOME
+Use unchanged original-centred direction pool (19x16) under ALL5own references.
+Fixed support, within-target/EI/weight-group sign balance, symmetric t interval,
+25% maximum relative weight perturbation. These are weight changes, not swaps.
+Use the same four factor scores F0M0,F1M0,F0M1,F1M1 as the score audit: shared
+reference executed/refractory-eligible mask; z=d*z+(1-d)*net arriving projection;
+margin=max(|v_pre-30|,2^-20). F1M1 primary, lower predicts larger safe radius.
+Controls: random direction0, full frozen-branch sensitivity (algebraic ceiling),
+mean and independently shifted source trains. Mean/shuffle preserve each source
+count over slots0..297 that arrive in horizon; last2source slots unchanged.
+Shifts use PCG64 seed20261108+input_index, indices G_B1,F_B2,F_H3,G_T4,F_HT5;
+each source shifts by integer1..297. These are SCORE controls, not external inputs.
+Store pool, inputs and all scores/selected directions BEFORE certificate outcomes.
+Selections on G_B are frozen to all other inputs, all methods and ties retained.
+Reference-conditioned scores on other inputs are NOT input-blind prediction.
+
+Radius search unchanged: initial0,2^-16,2^-12,2^-8,2^-6,2^-4,.25; stop initial
+scan at first point witness at +/-radius. Up to8bisections, stop width<=max(2^-20,
+.05*U). Whole interval certificate supplies L; actual point failure alone supplies U.
+Uncertified midpoint with two passing endpoints is proof_gap, not unsafety.
+Cap-certified remains right-censored; no invented finite U. Positive support and
+external event schedules fixed. At radius0, native exact local replay must match
+reference states. If an interval cannot certify0, record this; baseline equality
+still gives L=0, but never infer a positive region. No cap/tolerance/seed tuning.
+Independent native/Python replay at EVERY final failed witness; validate every
+reported lower interval and endpoints. Exact-Fraction family check on fixed pair
+IDs0,9,18 direction0 under each NEW input (9preselected conditions), regardless
+of outcome or positive radius. Generic external-input preparation is the only
+adapter; certification numerical kernels are unchanged. Verify old G_B/F_B radii,
+queries and temporal/factor scores against existing outcomes BEFORE interpreting
+new results. Keep bookkeeping differences separate from scientific changes.
+
+REPORT
+Matched within-target macro and direction-pair micro concordance; same resolved
+set for all scores; half credit for prediction ties under original1e-10 rule.
+Coverage, caps, proof gaps, silent/non-null counts and excluded targets reported.
+Fixed ratio bins for L_safer/U_less_safe: (1,1.1],(1.1,1.25],(1.25,1.5],(1.5,2],>2.
+Report score-factor differences and cross-input order disagreements ONLY on pairs
+resolved in BOTH inputs. Opposite order is not synonymous with systematic reversal.
+Compare frozen G_B predictions/selected IDs with current-reference scores and
+random/mean/shuffle choices; equal caps operational ties, not equal true radii.
+No independent-seed inference, causal margin attribution, runtime speedup claim,
+or saturation/breakpoint fit. Report input and output activity separately.
+
+TECHNICAL STOP CONDITIONS
+Freeze protocol/events/graphs/source hashes before new runs. Stop on nonfinite
+states, missing files, invalid invariants or bridge mismatch, preserve failure and
+explain before any revised run. If adapting I/O requires a code correction, log
+it and relock before rerun; never change the scientific design using new outcomes.
+No further input/seed/perturbation expansion regardless of scientific outcome.

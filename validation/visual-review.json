@@ -1,0 +1,54 @@
+{
+  "status": "pass",
+  "method": "All pages compared pixel-for-pixel with the reviewed frozen parent. Every changed page individually visually reviewed at full-page resolution.",
+  "documents": {
+    "en": {
+      "pages": 68,
+      "changed_pages_visually_reviewed": [
+        29,
+        39,
+        41,
+        42,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "remaining_pages_pixel_identical_to_reviewed_base": 55,
+      "blocking_layout_defects": [],
+      "pdf_sha256": "8239132f87e33dd14ab090af7716cccf495426ce34034cfdb125aa9c6e1862f3"
+    },
+    "zh": {
+      "pages": 75,
+      "changed_pages_visually_reviewed": [
+        31,
+        32,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        67,
+        68,
+        69,
+        72,
+        73,
+        74,
+        75
+      ],
+      "remaining_pages_pixel_identical_to_reviewed_base": 56,
+      "blocking_layout_defects": [],
+      "pdf_sha256": "ea584ec6f96be9028792cb5f79298c81c98169cad6fc83073d25d49ab67aa4ed"
+    }
+  }
+}
