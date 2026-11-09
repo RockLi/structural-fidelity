@@ -1,0 +1,25 @@
+{
+  "version": "preprint-2026-11-10",
+  "archive": {
+    "name": "input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip",
+    "bytes": 2375703250,
+    "sha256": "85a4b86fbbf1d52b30975d94de7bc648858eb5e4ab9742d17a67d59a4131b3f7"
+  },
+  "parts": [
+    {
+      "name": "input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip.part01",
+      "bytes": 1000000000,
+      "sha256": "9f5b212cb1cfec9e8f1b52442248500e7530cef900ceea70e34b3ca9684b143c"
+    },
+    {
+      "name": "input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip.part02",
+      "bytes": 1000000000,
+      "sha256": "d3db3ee9ebfcf6a605b35c322c2bebf9a6fab8fbd9850e9be82d3ec9644fda7f"
+    },
+    {
+      "name": "input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip.part03",
+      "bytes": 375703250,
+      "sha256": "5f957170c1b6042f35d8da0dd1de0550e1bb1ba17f5703df0410865e2c29aa5c"
+    }
+  ]
+}

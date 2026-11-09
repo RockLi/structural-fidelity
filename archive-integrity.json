@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "archive": "input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip",
+  "archive_sha256": "85a4b86fbbf1d52b30975d94de7bc648858eb5e4ab9742d17a67d59a4131b3f7",
+  "archive_bytes": 2375703250,
+  "manifest_files": 15512,
+  "crc_checked": true,
+  "all_member_hashes_checked": true,
+  "exclusions": "Root archive/self-manifest/integrity report; temporary current page renders and caches. Evidence retained intact."
+}
