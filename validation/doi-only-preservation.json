@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "scope": "Only the English data/code availability paragraph differs from the immediate frozen parent; Chinese files are unchanged historical artifacts.",
+  "documents": {
+    "en": {
+      "pages": 68,
+      "changed_pages_visually_reviewed": [
+        39,
+        40,
+        41,
+        42
+      ],
+      "all_remaining_pages_pixel_identical_to_reviewed_parent": true,
+      "pdf_sha256": "c0420c8335eeaa519f431a8be4e5ba7a6609aa6a225715612b836e1af32dcb34",
+      "docx_sha256": "3740eaa435517674da7f4d481f2163681be9cfa6929152fedd438b9477d788b5",
+      "blocking_layout_defects": []
+    },
+    "zh": {
+      "pages": 75,
+      "changed_pages_visually_reviewed": [],
+      "all_remaining_pages_pixel_identical_to_reviewed_parent": true,
+      "pdf_sha256": "ea584ec6f96be9028792cb5f79298c81c98169cad6fc83073d25d49ab67aa4ed",
+      "docx_sha256": "0dbd6bcb8dc215e742e28602fb609bbabd125c0ab70670585d88425bc863f711",
+      "blocking_layout_defects": [],
+      "retained_historical_artifact_not_new_publication": true
+    }
+  },
+  "publication_scope": "English only; Chinese PDF/DOCX/source restored exactly from frozen pre-DOI release",
+  "historical_chinese": {
+    "paper_zh.py": "733aac93ecfe9dea664913b7d2537b71f2d37e7cbfaada597e644ee285080bb4",
+    "input-and-horizon-dependent-structural-fidelity-preprint-zh.docx": "0dbd6bcb8dc215e742e28602fb609bbabd125c0ab70670585d88425bc863f711",
+    "input-and-horizon-dependent-structural-fidelity-preprint-zh.pdf": "ea584ec6f96be9028792cb5f79298c81c98169cad6fc83073d25d49ab67aa4ed"
+  }
+}

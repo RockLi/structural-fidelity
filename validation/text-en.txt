@@ -1576,10 +1576,12 @@ study-specific path is given. Additional studies are under evidence/studies. The
 includes the post hoc horizon witnesses and input-order comparisons with unresolved cases. The default  
 rebuild regenerates analysis tables, figures and documents from archived data; it does not execute a new  
 scientific experiment. Immutable source manifests and earlier frozen manuscript hashes are checked. The  
-public repository and release materials are available at https://github.com/RockLi/structural-fidelity. No  
-archival DOI has been assigned.
+frozen  complete  source-and-evidence  package  and  checksum  manifests  are  archived  at  
+https://doi.org/10.5281/zenodo.24089361 under CC BY 4.0. The public repository, current manuscripts  
 
 40
+and availability-update sources are available at https://github.com/RockLi/structural-fidelity. The archived  
+package preserves the pre-DOI manuscripts; this update changes only availability information.
 References
 [1] Lytton WW. Optimizing synaptic conductance calculation for network simulations. Neural Computation. 1996;8(3):501
 –509. https://doi.org/10.1162/neco.1996.8.3.501
@@ -1628,10 +1630,10 @@ https://papers.neurips.cc/paper_files/paper/2020/hash/a1ada9947e0d683b4625f94c74
 suggests rate coding in cortex. Nature. 2010;466:123–127. https://doi.org/10.1038/nature09086
 [21] Cessac B, Viéville T. On dynamics of integrate-and-fire neural networks with conductance based synapses. Frontiers in 
 Computational Neuroscience. 2008;2:2. https://doi.org/10.3389/neuro.10.002.2008
-[22] Rostro-Gonzalez H, Cessac B, Viéville T. Parameter estimation in spiking neural networks: a reverse-engineering 
-approach. Journal of Neural Engineering. 2012;9(2):026024. https://doi.org/10.1088/1741-2560/9/2/026024
 
 41
+[22] Rostro-Gonzalez H, Cessac B, Viéville T. Parameter estimation in spiking neural networks: a reverse-engineering 
+approach. Journal of Neural Engineering. 2012;9(2):026024. https://doi.org/10.1088/1741-2560/9/2/026024
 [23] Memmesheimer RM, Rubin R, Ölveczky BP, Sompolinsky H. Learning precisely timed spikes. Neuron. 
 2014;82(4):925–938. https://doi.org/10.1016/j.neuron.2014.03.026
 [24] Monteforte M, Wolf F. Dynamic flux tubes form reservoirs of stability in neuronal circuits. Physical Review X. 
@@ -1671,10 +1673,10 @@ E5 I-source w ≥ 1.5
 The E1 medium gain grid is gfE  {1.0, 2.5, 5.0} and ∈ gfI  {0.1, 0.4, 0.8}. The local grid is ∈ gfE  {2.0, 2.5,∈  
 3.0} and gfI  {0.30, 0.40, 0.50}. Both methods retain their default slow gains and time constants. The∈  
 center pair (2.5, 0.4) occurs twice. The history output ignores slow gains as specified in Appendix H.1.
-All sustained workloads inject amplitude 10 per slot into every excitatory chunk. E5 injects amplitude 150  
-in slots 0–79 and zero in slots 80–299. Local fields start at zero, receive the post-step update  F E ←  
 
 42
+All sustained workloads inject amplitude 10 per slot into every excitatory chunk. E5 injects amplitude 150  
+in slots 0–79 and zero in slots 80–299. Local fields start at zero, receive the post-step update  F E ←  
 exp(−dt/10)F E +  Sk and  FI ← exp(−dt/10) FI , and are injected before the next active unit step with  
 coefficient 0.01. Initial voltage, threshold, reset and refractory rules are given in Section 2.1.
 Appendix B Additional comparisons

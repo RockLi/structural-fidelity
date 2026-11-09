@@ -1,0 +1,4 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+The author authorized CC BY 4.0 for this research package on 10 November 2026. Attribute Xinjun Li, NEXT BRAIN LTD, the paper title, and https://doi.org/10.5281/zenodo.24089361. Existing third-party rights and notices, where applicable, remain in force. The original archived bytes are preserved; this notice records the publication license without rewriting the historical evidence.

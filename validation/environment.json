@@ -16,6 +16,7 @@
     "DejaVu Sans",
     "Cambria Math"
   ],
-  "render_command": "FONTCONFIG_FILE=manuscript/render_fontconfig_macos.conf python render_docx.py manuscript/input-and-horizon-dependent-structural-fidelity-preprint-{en,zh}.docx --output_dir validation/final-{en,zh} --emit_pdf",
-  "no_simulation": true
+  "render_command": "FONTCONFIG_FILE=/absolute/path/to/release/manuscript/render_fontconfig_macos.conf python render_docx.py manuscript/input-and-horizon-dependent-structural-fidelity-preprint-{en,zh}.docx --output_dir validation/shipping-{en,zh} --emit_pdf",
+  "no_simulation": true,
+  "fontconfig_note": "Absolute FONTCONFIG_FILE path is required because the renderer uses a temporary working directory."
 }

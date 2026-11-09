@@ -1,2 +1,7 @@
-10 November 2026 final editorial revision
-Added body references for Table 9 and Tables S1, S2, S8–S13 in both languages. All table/figure/equation labels and scientific content unchanged. Added the actual public repository URL; no DOI assigned. Prior 9 November release retained. No new simulation or scientific analysis.
+DOI availability update — English-only publication, 10 November 2026
+
+Zenodo: https://doi.org/10.5281/zenodo.24089361
+Only the English availability paragraph is updated. No scientific text, result,
+formula, proof, table or figure is changed. CC BY 4.0 is authorized for the package.
+The Chinese manuscript is retained unchanged from the frozen pre-DOI archive;
+no new Chinese paper asset is published. The previous release remains intact.

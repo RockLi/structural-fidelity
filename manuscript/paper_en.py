@@ -1,4 +1,4 @@
-"""Final table references and public repository; scientific evidence unchanged."""
+"""Zenodo availability update; scientific content unchanged."""
 
 TITLE = 'Input and Horizon Dependent Structural Fidelity in Chunk Coupled Spiking Networks'
 
@@ -1612,8 +1612,11 @@ SECTIONS = [('Abstract',
   'post hoc horizon witnesses and input-order comparisons with unresolved cases. The default '
   'rebuild regenerates analysis tables, figures and documents from archived data; it does not '
   'execute a new scientific experiment. Immutable source manifests and earlier frozen manuscript '
-  'hashes are checked. The public repository and release materials are available at '
-  'https://github.com/RockLi/structural-fidelity. No archival DOI has been assigned.')]
+  'hashes are checked. The frozen complete source-and-evidence package and checksum manifests are '
+  'archived at https://doi.org/10.5281/zenodo.24089361 under CC BY 4.0. The public repository, '
+  'current manuscripts and availability-update sources are available at '
+  'https://github.com/RockLi/structural-fidelity. The archived package preserves the pre-DOI '
+  'manuscripts; this update changes only availability information.')]
 
 APPENDIX = [('Appendix A Reproducible model and workload parameters',
   'All graph probabilities and weights below are ordered (EE, EI, IE, II). Each recurrent workload '

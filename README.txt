@@ -1,10 +1,12 @@
 INPUT AND HORIZON DEPENDENT STRUCTURAL FIDELITY
-Final table-reference revision and complete evidence release, 10 November 2026
+Zenodo availability update, 10 November 2026
 Author: Xinjun Li, NEXT BRAIN LTD
 
 START HERE
-manuscript/input-and-horizon-dependent-structural-fidelity-preprint-en.docx and .pdf
-manuscript/input-and-horizon-dependent-structural-fidelity-preprint-zh.docx and .pdf
+Current online article: manuscript/input-and-horizon-dependent-structural-fidelity-preprint-en.pdf
+The current publication is English PDF only. Word files are local working files.
+Historical Chinese/Word artifacts in the already-published frozen archive are unchanged.
+
 The current manuscript is one complete article with Appendices A–N. It is based
 on the full frozen manuscript, retaining all 25 original tables and 22 original
 figures, and integrating five tables and three figures from the completed studies.
@@ -14,17 +16,13 @@ preserved under evidence/legacy-release, including its manuscripts and manifest.
 No neural simulation, new graph sampling or radius search was run for this revision.
 
 THIS EDITION
-Added body references to Table 9 and Tables S1, S2, S8–S13 in both languages.
-Updated public availability to the dedicated GitHub repository. No study-specific
-archival DOI has been assigned. No scientific conclusion, numerical result,
-equation, proof, table cell or image changed in this editorial revision.
-The full article and Appendices A–N retain all 30 tables, 25 figures and 27
-references. The two main questions concern input-conditioned structural effects
-and finite-horizon fidelity ranges. The older experiments and negative results
-remain intact. Main figures and tables follow their first references.
-The immediately preceding 9 November release remains frozen separately;
-validation/previous-20261109-lock.json records its hashes. Its manuscript sources
-and DOCX are also retained in editorial/table-citations-prior.
+This edition changes only the English Data and code availability paragraph to
+identify the companion Zenodo archive, public repository and authorized CC BY 4.0
+license. Scientific text, results, proofs, tables, images and references are unchanged.
+The previous frozen GitHub release preprint-2026-11-10 remains intact; its source
+and evidence ZIP is the exact archive deposited with Zenodo.
+validation/previous-github-freeze-lock.json records the immediate parent hashes.
+Earlier body-reference edits and their frozen source remain in editorial/.
 
 EVIDENCE LINEAGE
 1. evidence/legacy-release: immutable previous release, including the seed99
@@ -53,6 +51,7 @@ have different denominators and are not pooled. See manuscript Sections 2–4.
 REBUILD CURRENT RESULTS, FIGURES AND DOCX (NO SIMULATIONS)
 Use Python 3 with python-docx for the main interpreter, and a Python environment
 with numpy and matplotlib for --plot-python (the same interpreter is acceptable).
+  python prepare_local_word.py
   python reproduce_current.py --plot-python /absolute/path/to/python \
       --output-dir /absolute/path/to/a-new-empty-location
 The output directory must not exist. This first rebuilds the legacy score-factor,
@@ -73,9 +72,12 @@ INTEGRITY
   python verify_release.py
 Checks source-study manifests, raw-bracket recomputations, table values, reference
 numbering and bilingual labels. External old-release hashes are checked if present.
-package-sha256.json lists all release members except itself and the post-archive
-integrity report. archive-integrity.json is a companion report beside the ZIP (not inside it),
-recording ZIP member hash/CRC verification.
+The frozen archive package-sha256.json and archive-integrity.json describe the
+unchanged Zenodo ZIP. Apply the availability update only after verifying that ZIP.
+availability-update-sha256.json verifies every replacement/addition in the update;
+current-package-sha256.json identifies the combined current package, excluding
+the locally regenerated English Word file (verified by OOXML/member hashes). The old
+manifest continues to describe the frozen archive, not the overlaid manuscripts.
 Large temporary page PNG renders and environment caches are excluded from the ZIP;
 archived evidence files required by the original manifests are retained.
 
@@ -83,7 +85,8 @@ PUBLIC AVAILABILITY
 https://github.com/RockLi/structural-fidelity
 The complete archive is distributed in numbered binary parts on the GitHub
 Release. Concatenate parts in numeric order to reconstruct the ZIP, then verify
-its SHA-256 using the release checksum files. No archival DOI has been assigned.
+its SHA-256 using the release checksum files. The frozen complete archive DOI is https://doi.org/10.5281/zenodo.24089361.
+The author has authorized CC BY 4.0 for this package.
 This package does not claim journal acceptance, speedup, arbitrary graph-rewiring
 certification or unlimited robustness.
 
@@ -98,3 +101,17 @@ OUTPUT NAMES
 Current PDF/DOCX names use input-and-horizon-dependent-structural-fidelity-preprint.
 The archive is input-and-horizon-dependent-structural-fidelity-source-and-evidence.zip.
 Historical evidence keeps its original filenames and immutable manifests.
+
+ZENODO AVAILABILITY UPDATE
+The current published paper is English-only. Chinese manuscript files are retained
+unchanged solely as historical components of the frozen reproducibility package.
+The Zenodo archive is the unchanged pre-DOI release, SHA-256
+85a4b86fbbf1d52b30975d94de7bc648858eb5e4ab9742d17a67d59a4131b3f7.
+Extract it into a fresh directory, then apply the separately supplied availability
+update ZIP to that directory to rebuild the current manuscripts. The update
+replaces only non-evidence files; no archived experimental evidence is changed.
+
+PDF-ONLY AVAILABILITY UPDATE
+The update ZIP contains no Word files and no new Chinese manuscript. After
+applying it over the verified frozen archive, run python prepare_local_word.py
+to rebuild and verify the current English Word locally before reproduction checks.

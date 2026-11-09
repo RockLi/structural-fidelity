@@ -1,0 +1,17 @@
+{
+  "LICENSE-NOTICE.txt": "9424f599f3618b9fd607ae7d0d94285288ef82602ad75ce10e0968d37f605633",
+  "README.txt": "ac6f7975653681f5edd21e90cc88d8e04fa11083d916bb5807a28ca62245e33e",
+  "REVISION-NOTES.txt": "f1cbd461a5e317e4f50e4f0c9016205ffeb10d41f87a462c3fd3d8a2377ab97a",
+  "editorial/table-citation-changes.json": "4f58e64d9ba5e9e4f627b20cd65c42d8ed228340e65f03e2352f45773f10427a",
+  "manuscript/input-and-horizon-dependent-structural-fidelity-preprint-en.pdf": "c0420c8335eeaa519f431a8be4e5ba7a6609aa6a225715612b836e1af32dcb34",
+  "manuscript/paper_en.py": "750c76e943ca6bc33143a4931d454ca3889f41608e12bf16d2639a607e3c89a6",
+  "prepare_local_word.py": "b271cfcf222328a1d1fa0fe1c64b1ce7f26266f3e9d41a82d7172de375355501",
+  "validation/content-audit.json": "2a952b434d06faa7fabfbe94324647314da3164da8687662be9b8e589212d514",
+  "validation/doi-only-preservation.json": "58e24aca11f29a40d8dfb9a37ed6540ff8743534b44a58d6d887df4cb615ee64",
+  "validation/english-docx-member-sha256.json": "f2bcc073b7cf2b44949d0535dbd584f121e1870ed28e6257281718eaedfba5db",
+  "validation/environment.json": "cf9ec8402e72ffb4eb223d2e5aed76691a531d394c15e9120ada2bc2c8c49b63",
+  "validation/previous-github-freeze-lock.json": "efa495369c218a8cf42d77f876e0ba242b1b7a740b7bd4b1430acfa083da28bd",
+  "validation/text-en.txt": "f77eaed3bcc39fa4a6234f9d954595d6887dd891f9217bbba5cadc7936f87ee4",
+  "validation/visual-review.json": "7b9e0fbdcd3258d2641414bf4555a32c53791394e0ff09b93f6ec28def7b606e",
+  "current-package-sha256.json": "cb5c62dba0f8535622c293c890b224df092c96c5497233132e86f3000618510b"
+}
