@@ -6,6 +6,8 @@ This study distinguishes input-conditioned effects of structural edits from fini
 
 ## Read the paper
 
+[arXiv:2611.12813](https://arxiv.org/abs/2611.12813) · cs.CE · [arXiv PDF (v1)](https://arxiv.org/pdf/2611.12813v1).
+
 [Read the English PDF](manuscript/input-and-horizon-dependent-structural-fidelity-preprint-en.pdf).
 
 This update publishes only the English PDF. Word files remain local working files.

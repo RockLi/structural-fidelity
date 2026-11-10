@@ -9,4 +9,9 @@ authors:
     orcid: "https://orcid.org/0009-0005-8381-0416"
 version: 2026.11.10
 date-released: 2026-11-10
-url: "https://github.com/RockLi/structural-fidelity"
+url: "https://arxiv.org/abs/2611.12813"
+repository-code: "https://github.com/RockLi/structural-fidelity"
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2611.12813"
+    description: "arXiv:2611.12813 [cs.CE]"
